@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Shop - An Idea Forge Foundation Makerspace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Lexend', sans-serif; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 300px; max-height: 400px; }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
+        .nav-link.active { background-color: #F97316; color: white; }
+        .tab-btn.active { border-bottom: 2px solid #F97316; color: #F97316; }
+        .equipment-filter.active { background-color: #F97316; color: white; }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+<div class="flex">
+    <!-- Desktop Sidebar -->
+    <aside id="desktop-nav" class="hidden lg:block w-64 bg-white border-r border-stone-200 p-6 fixed top-0 left-0 h-full">
+        <a href="index.html" class="block">
+            <h2 class="text-2xl font-bold text-stone-900">The Shop</h2>
+            <p class="text-sm text-stone-500">by Idea Forge Foundation</p>
+        </a>
+        <nav class="mt-8">
+            <ul class="space-y-2">
+                <li><a href="#vision" class="nav-link block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Our Vision</a></li>
+                <li><a href="#offerings" class="nav-link block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Our Offerings</a></li>
+                <li><a href="#market" class="nav-link block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Our Community</a></li>
+                <li><a href="#projects" class="nav-link block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Signature Projects</a></li>
+                <li><a href="#principles" class="nav-link block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Our Principles</a></li>
+                <li><a href="#roadmap" class="nav-link block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Our Roadmap</a></li>
+                <li><a href="#support" class="nav-link block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Get Involved</a></li>
+            </ul>
+        </nav>
+        <div class="absolute bottom-4 left-6 right-6">
+            <p class="text-xs text-stone-400">&copy; 2024 Idea Forge Foundation</p>
+            <a href="index.html" class="text-xs text-orange-600 hover:underline">Back to Main Site</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <header class="lg:hidden fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html">
+                 <h2 class="text-xl font-bold text-stone-900">The Shop</h2>
+                 <p class="text-xs text-stone-500">by Idea Forge Foundation</p>
+            </a>
+            <button id="mobile-menu-button" class="text-stone-700 focus:outline-none">
+                <span class="text-2xl">&#9776;</span>
+            </button>
+        </div>
+        <nav id="mobile-nav" class="hidden px-6 pt-2 pb-4">
+            <ul class="space-y-1">
+                <li><a href="#vision" class="nav-link-mobile block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Our Vision</a></li>
+                <li><a href="#offerings" class="nav-link-mobile block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Our Offerings</a></li>
+                <li><a href="#market" class="nav-link-mobile block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Our Community</a></li>
+                <li><a href="#projects" class="nav-link-mobile block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Signature Projects</a></li>
+                <li><a href="#principles" class="nav-link-mobile block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Our Principles</a></li>
+                <li><a href="#roadmap" class="nav-link-mobile block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Our Roadmap</a></li>
+                <li><a href="#support" class="nav-link-mobile block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Get Involved</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="w-full lg:ml-64 p-6 pt-24 lg:pt-6">
+        <section id="hero" class="text-center min-h-[60vh] flex flex-col items-center justify-center bg-white rounded-2xl shadow-sm p-8">
+            <h1 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-orange-500 to-amber-500 text-transparent bg-clip-text">Progress through Creation.</h1>
+            <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-stone-600">
+                Idea Forge Foundation's mission is to progress art, science, & engineering through education and shared resources to cultivate the next generation of artists, makers, and creators in Oklahoma City.
+            </p>
+            <a href="#support" class="mt-8 px-8 py-3 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-600 transition-all duration-200 transform hover:scale-105">
+                Support Our Mission
+            </a>
+        </section>
+
+        <section id="vision" class="py-16 md:py-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-stone-900">Our Vision for OKC</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-stone-600">We see "The Shop" as a catalyst for a more creative, innovative, and entrepreneurial Oklahoma City. This is the future we are building together.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="vision-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-1">
+                    <span class="text-4xl">🎨</span>
+                    <h3 class="text-xl font-bold mt-4">A New Wave of Artists & Artisans</h3>
+                    <p class="mt-2 text-stone-600">Igniting a vibrant local culture where creativity is celebrated and beautiful, locally-made goods flourish.</p>
+                </div>
+                <div class="vision-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-1">
+                    <span class="text-4xl">🧑‍🔬</span>
+                    <h3 class="text-xl font-bold mt-4">The Next Generation of Creators</h3>
+                    <p class="mt-2 text-stone-600">Nurturing curiosity and providing hands-on experiences that empower the innovators of tomorrow.</p>
+                </div>
+                <div class="vision-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-1">
+                    <span class="text-4xl">📚</span>
+                    <h3 class="text-xl font-bold mt-4">Continuing STEM Education</h3>
+                    <p class="mt-2 text-stone-600">Creating accessible pathways for lifelong learning, vocational training, and apprenticeships in technical fields.</p>
+                </div>
+                 <div class="vision-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-1">
+                    <span class="text-4xl">🚀</span>
+                    <h3 class="text-xl font-bold mt-4">Startups & Cottage Industries</h3>
+                    <p class="mt-2 text-stone-600">Serving as an incubator for local entrepreneurs to turn their bright ideas into viable businesses.</p>
+                </div>
+                <div class="vision-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-1 col-span-1 md:col-span-2 lg:col-span-1">
+                    <span class="text-4xl">✨</span>
+                    <h3 class="text-xl font-bold mt-4">Community-Made Creations</h3>
+                    <p class="mt-2 text-stone-600">Celebrating and showcasing the amazing, useful, and beautiful things our community can create together.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="offerings" class="py-16 md:py-24 bg-white rounded-2xl shadow-sm p-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-stone-900">What is "The Shop"?</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-stone-600">"The Shop" is our solution: a community-powered hub of tools, knowledge, and collaboration. Explore our three core pillars: the equipment we provide, the workshops we host, and the memberships that make it all accessible.</p>
+            </div>
+
+            <div class="border-b border-stone-200 mb-8">
+                <nav class="flex justify-center -mb-px space-x-8" aria-label="Tabs">
+                    <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg text-stone-500 hover:text-orange-500" data-tab="equipment">Equipment</button>
+                    <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg text-stone-500 hover:text-orange-500" data-tab="workshops">Workshops</button>
+                    <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-lg text-stone-500 hover:text-orange-500" data-tab="memberships">Membership</button>
+                </nav>
+            </div>
+            
+            <div id="tab-content"></div>
+        </section>
+
+        <section id="market" class="py-16 md:py-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-stone-900">Our Community & Market</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-stone-600">"The Shop" is designed for the diverse and growing population of Oklahoma City. We fill a unique niche by providing in-depth resources and a strong community focus that complements existing local institutions.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <h3 class="text-2xl font-bold text-center">OKC Demographics</h3>
+                    <div class="chart-container">
+                        <canvas id="demographicsChart"></canvas>
+                    </div>
+                </div>
+                 <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <h3 class="text-2xl font-bold text-center mb-4">Our Target Audience</h3>
+                    <div class="grid grid-cols-2 gap-4 text-center">
+                        <div class="bg-stone-100 p-4 rounded-lg">
+                            <span class="text-3xl">🛠️</span>
+                            <p class="font-semibold mt-2">Hobbyists & DIY Enthusiasts</p>
+                        </div>
+                         <div class="bg-stone-100 p-4 rounded-lg">
+                            <span class="text-3xl">💡</span>
+                            <p class="font-semibold mt-2">Entrepreneurs & Startups</p>
+                        </div>
+                        <div class="bg-stone-100 p-4 rounded-lg">
+                            <span class="text-3xl">🎓</span>
+                            <p class="font-semibold mt-2">Students & Educators</p>
+                        </div>
+                        <div class="bg-stone-100 p-4 rounded-lg">
+                            <span class="text-3xl">👨‍👩‍👧‍👦</span>
+                            <p class="font-semibold mt-2">Families & Youth</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="mt-8 bg-white p-8 rounded-2xl shadow-sm">
+                <h3 class="text-2xl font-bold text-center mb-6">Our Place in the OKC Ecosystem</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="border border-stone-200 p-4 rounded-lg">
+                        <h4 class="font-bold">Libraries & Museums</h4>
+                        <p class="text-sm text-stone-600 mt-2">Provide fantastic, often free, introductory maker experiences. They are vital for sparking initial curiosity.</p>
+                    </div>
+                     <div class="border-4 border-orange-500 p-4 rounded-lg bg-orange-50">
+                        <h4 class="font-bold text-orange-600">The Shop (Idea Forge)</h4>
+                        <p class="text-sm text-stone-600 mt-2">Offers the next step: a dedicated space with more advanced tools, in-depth education, and a membership model for those ready to commit to deeper learning and long-term projects.</p>
+                    </div>
+                    <div class="border border-stone-200 p-4 rounded-lg">
+                        <h4 class="font-bold">Specialty Studios</h4>
+                        <p class="text-sm text-stone-600 mt-2">Serve artists and crafters with a deep focus in one specific area, like pottery or painting.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW SECTION: Signature Projects -->
+        <section id="projects" class="py-16 md:py-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-stone-900">Signature Projects & Initiatives</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-stone-600">Beyond our core offerings, we pursue unique, community-focused projects that leverage our members' skills for the greater good.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <h3 class="text-2xl font-bold mb-3">E-Waste Upcycling Program</h3>
+                    <p class="text-stone-600 mb-4">We plan to establish a collection point for electronic waste. Our members will learn to safely disassemble, sort, and upcycle components for art projects, repairs, and new inventions, while responsibly recycling the rest. This reduces landfill waste and creates a valuable resource stream.</p>
+                    <span class="font-semibold text-orange-600">Status: Seeking corporate partners for equipment donation.</span>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <h3 class="text-2xl font-bold mb-3">Community Mesh Network</h3>
+                    <p class="text-stone-600 mb-4">Leveraging amateur radio licenses (HAM) and modern hardware, we aim to build a resilient, open-source telecommunications network. This project provides invaluable hands-on learning in networking and infrastructure, with potential applications in emergency communications and bridging the digital divide.</p>
+                    <span class="font-semibold text-orange-600">Status: Initial research and tower site analysis underway.</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="principles" class="py-16 md:py-24 bg-stone-800 text-white rounded-2xl shadow-sm p-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Our Guiding Principles</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-stone-300">Idea Forge Foundation operates with a clear and unwavering set of values. These principles are our moral compass, ensuring we always serve our community's best interests.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="principle-card bg-stone-700 p-6 rounded-lg">
+                    <h3 class="font-semibold text-lg text-orange-400">Community-Centric</h3>
+                    <p class="mt-2 text-stone-300 text-sm">We prioritize the needs and interests of our community above all, empowering members to take ownership.</p>
+                </div>
+                <div class="principle-card bg-stone-700 p-6 rounded-lg">
+                    <h3 class="font-semibold text-lg text-orange-400">Board Stewardship</h3>
+                    <p class="mt-2 text-stone-300 text-sm">The board acts as stewards of the mission, upholding integrity and transparency without personal gain.</p>
+                </div>
+                <div class="principle-card bg-stone-700 p-6 rounded-lg">
+                    <h3 class="font-semibold text-lg text-orange-400">Operational Autonomy</h3>
+                    <p class="mt-2 text-stone-300 text-sm">The board refrains from micromanaging daily operations, trusting the community's expertise.</p>
+                </div>
+                <div class="principle-card bg-stone-700 p-6 rounded-lg">
+                    <h3 class="font-semibold text-lg text-orange-400">Safety & Well-being</h3>
+                    <p class="mt-2 text-stone-300 text-sm">We maintain a supportive and inclusive environment where all can learn and experiment without fear.</p>
+                </div>
+                <div class="principle-card bg-stone-700 p-6 rounded-lg">
+                    <h3 class="font-semibold text-lg text-orange-400">Financial Prudence</h3>
+                    <p class="mt-2 text-stone-300 text-sm">We treat money like "toxic waste"—handled carefully, responsibly, and only when necessary for the community's benefit.</p>
+                </div>
+                 <div class="principle-card bg-stone-700 p-6 rounded-lg">
+                    <h3 class="font-semibold text-lg text-orange-400">Reciprocity & Giving Back</h3>
+                    <p class="mt-2 text-stone-300 text-sm">We believe in a mutual exchange of privileges and giving back to the community that supports us.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="py-16 md:py-24">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-stone-900">Our Roadmap to Impact</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-stone-600">We have a clear, phased plan to launch "The Shop" and grow our impact. Our goals are ambitious but achievable with community support.</p>
+            </div>
+            <div class="relative">
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-stone-300 -translate-y-1/2"></div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center p-6 bg-white rounded-2xl shadow-sm">
+                        <div class="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-orange-100 text-orange-500 rounded-full font-bold text-2xl">1</div>
+                        <h3 class="text-xl font-bold">Year 1: Foundation</h3>
+                        <ul class="text-sm text-stone-600 mt-2 list-disc list-inside text-left">
+                            <li>Secure location & build-out</li>
+                            <li>Acquire core equipment via donations</li>
+                            <li>Launch membership & workshops</li>
+                            <li>Secure initial grant funding</li>
+                        </ul>
+                    </div>
+                     <div class="text-center p-6 bg-white rounded-2xl shadow-sm">
+                        <div class="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-orange-100 text-orange-500 rounded-full font-bold text-2xl">2</div>
+                        <h3 class="text-xl font-bold">Years 2-3: Growth</h3>
+                        <ul class="text-sm text-stone-600 mt-2 list-disc list-inside text-left">
+                            <li>Expand equipment offerings</li>
+                            <li>Increase workshop diversity</li>
+                            <li>Achieve financial sustainability</li>
+                            <li>Host community showcases</li>
+                        </ul>
+                    </div>
+                     <div class="text-center p-6 bg-white rounded-2xl shadow-sm">
+                        <div class="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-orange-100 text-orange-500 rounded-full font-bold text-2xl">3</div>
+                        <h3 class="text-xl font-bold">Years 4+: Leadership</h3>
+                        <ul class="text-sm text-stone-600 mt-2 list-disc list-inside text-left">
+                            <li>Build operating reserve</li>
+                            <li>Explore expansion/outreach</li>
+                            <li>Become a recognized OKC leader</li>
+                            <li>Foster startups & artisans</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="support" class="py-16 md:py-24 bg-orange-500 text-white rounded-2xl shadow-sm p-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Join Us in Building The Future</h2>
+                <p class="mt-4 max-w-2xl mx-auto">Your support is vital to our mission. Whether through a donation, volunteering your time, or partnering with us, you can help build "The Shop" and empower Oklahoma City's creators.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-center mb-4">How You Can Help</h3>
+                    <div class="space-y-4">
+                        <!-- Placeholder for Donorbox embed -->
+                        <div id="donorbox-embed">
+                             <div class="bg-white border-2 border-dashed border-orange-300 rounded-lg p-8 text-center">
+                                <p class="text-stone-600 font-semibold">Our secure Donorbox form will be embedded here.</p>
+                                <a href="#" class="mt-4 inline-block px-6 py-2 bg-orange-600 text-white font-semibold rounded-lg shadow-md hover:bg-orange-700 transition-colors">Donate Now</a>
+                            </div>
+                        </div>
+                        <a href="#" class="block w-full text-center p-4 border-2 border-white rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition-colors">Volunteer Your Time</a>
+                        <a href="#" class="block w-full text-center p-4 border-2 border-white rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition-colors">Partner With Us / Donate Equipment</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-center mb-4">Where Your Support Goes</h3>
+                     <div class="chart-container">
+                        <canvas id="fundingChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Data for the 'Our Offerings' section
+    const offeringsData = {
+        equipment: {
+            filters: ["All", "Digital Fabrication", "Woodworking", "Electronics", "Textiles"],
+            items: [
+                { category: "Digital Fabrication", name: "3D Printers (FDM & Resin)" },
+                { category: "Digital Fabrication", name: "Laser Cutter/Engraver" },
+                { category: "Digital Fabrication", name: "CNC Router" },
+                { category: "Digital Fabrication", name: "Vinyl Cutter" },
+                { category: "Woodworking", name: "Table Saw & Band Saw" },
+                { category: "Woodworking", name: "Drill Press, Sanders, Planers" },
+                { category: "Woodworking", name: "Full set of Hand Tools" },
+                { category: "Electronics", name: "Soldering & Rework Stations" },
+                { category: "Electronics", name: "Oscilloscopes & Power Supplies" },
+                { category: "Electronics", name: "Microcontrollers (Arduino, Pi)" },
+                { category: "Textiles", name: "Sewing & Embroidery Machines" },
+                { category: "Textiles", name: "Serger & Cricut" },
+            ]
+        },
+        workshops: [
+            { title: "Tool Safety & Basic Use", description: "Mandatory certifications for using our core equipment like laser cutters and woodshop tools." },
+            { title: "Skill-Based Workshops", description: "Dive deep into specific skills like 3D modeling, Arduino programming, or welding fundamentals." },
+            { title: "Project-Based Classes", description: "Build something amazing from start to finish, like a drone, a custom sign, or a mechanical toy." },
+            { title: "Youth & Family Programs", description: "Engaging STEAM camps and weekend workshops designed for the next generation of makers." }
+        ],
+        memberships: [
+            { tier: "Day Pass", price: "Flexible", features: ["For occasional users", "Access to common areas", "Pay-per-use on some tools"] },
+            { tier: "Maker", price: "Monthly", features: ["Ideal for hobbyists", "Access to most tools (post-cert)", "Discounts on classes"] },
+            { tier: "Pro Maker", price: "Monthly", features: ["For entrepreneurs & pros", "24/7 access (planned)", "Dedicated storage options"] }
+        ]
+    };
+
+    const tabContentContainer = document.getElementById('tab-content');
+
+    // Function to render the Equipment tab content
+    function renderEquipment() {
+        let filtersHTML = offeringsData.equipment.filters.map(f => `<button class="equipment-filter px-4 py-2 rounded-full text-sm font-medium bg-stone-100 hover:bg-orange-500 hover:text-white transition-colors" data-filter="${f}">${f}</button>`).join('');
+        
+        let itemsHTML = offeringsData.equipment.items.map(i => `
+            <div class="equipment-item p-4 bg-stone-50 rounded-lg" data-category="${i.category}">
+                <p class="font-semibold">${i.name}</p>
+            </div>`).join('');
+
+        return `
+            <div class="text-center mb-6">
+                <div id="equipment-filters" class="flex flex-wrap justify-center gap-2">${filtersHTML}</div>
+            </div>
+            <div id="equipment-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">${itemsHTML}</div>
+        `;
+    }
+
+    // Function to render the Workshops tab content
+    function renderWorkshops() {
+        return `<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            ${offeringsData.workshops.map(w => `
+                <div class="bg-stone-50 p-6 rounded-lg">
+                    <h4 class="font-bold text-lg text-orange-600">${w.title}</h4>
+                    <p class="mt-2 text-stone-600">${w.description}</p>
+                </div>
+            `).join('')}
+        </div>`;
+    }
+
+    // Function to render the Memberships tab content
+    function renderMemberships() {
+         return `<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            ${offeringsData.memberships.map(m => `
+                <div class="border-2 p-6 rounded-lg text-center flex flex-col ${m.tier === 'Maker' ? 'border-orange-500' : 'border-stone-200'}">
+                    <h4 class="text-xl font-bold">${m.tier}</h4>
+                    <p class="text-2xl font-bold my-4 ${m.tier === 'Maker' ? 'text-orange-500' : 'text-stone-800'}">${m.price}</p>
+                    <ul class="text-stone-600 space-y-2 flex-grow">
+                        ${m.features.map(f => `<li>${f}</li>`).join('')}
+                    </ul>
+                    <a href="#support" class="mt-6 w-full py-2 rounded-lg font-semibold ${m.tier === 'Maker' ? 'bg-orange-500 text-white hover:bg-orange-600' : 'bg-stone-200 text-stone-700 hover:bg-stone-300'} transition-colors">Learn More</a>
+                </div>
+            `).join('')}
+        </div>`;
+    }
+
+    // Function to set up the tab functionality
+    function setupTabs() {
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const tab = btn.dataset.tab;
+                
+                if (tab === 'equipment') tabContentContainer.innerHTML = renderEquipment();
+                if (tab === 'workshops') tabContentContainer.innerHTML = renderWorkshops();
+                if (tab === 'memberships') tabContentContainer.innerHTML = renderMemberships();
+
+                if (tab === 'equipment') setupEquipmentFilters();
+            });
+        });
+        document.querySelector('.tab-btn[data-tab="equipment"]').click();
+    }
+
+    // Function to set up the equipment filters
+    function setupEquipmentFilters() {
+        const filterButtons = document.querySelectorAll('.equipment-filter');
+        const equipmentItems = document.querySelectorAll('.equipment-item');
+        
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                
+                equipmentItems.forEach(item => {
+                    if (filter === 'All' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        document.querySelector('.equipment-filter[data-filter="All"]').classList.add('active');
+    }
+
+    // Function to create the demographics bar chart
+    function createDemographicsChart() {
+        const ctx = document.getElementById('demographicsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Population', 'Median Age', 'Bachelors %', 'HS Grad %'],
+                datasets: [{
+                    label: 'Oklahoma City',
+                    data: [690, 35, 34, 87.8], 
+                    backgroundColor: ['#FDBA74', '#F97316', '#FDBA74', '#F97316'],
+                    borderColor: ['#FB923C', '#EA580C', '#FB923C', '#EA580C'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) label += ': ';
+                                if (context.parsed.y !== null) {
+                                    if(context.label === 'Population') label += context.parsed.y + 'k';
+                                    else label += context.parsed.y;
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    }
+
+    // Function to create the funding doughnut chart
+    function createFundingChart() {
+        const ctx = document.getElementById('fundingChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Equipment', 'Build-Out', 'Operations', 'Programs'],
+                datasets: [{
+                    label: 'Startup Costs',
+                    data: [45, 25, 20, 10],
+                    backgroundColor: ['#FFFFFF', '#FDBA74', '#FED7AA', '#FFF7ED'],
+                    borderColor: '#EA580C',
+                    borderWidth: 1,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: 'white' }
+                    }
+                }
+            }
+        });
+    }
+
+    // Function to set up the mobile menu toggle
+    function setupMobileMenu() {
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileLinks = document.querySelectorAll('.nav-link-mobile');
+
+        menuButton.addEventListener('click', () => {
+            mobileNav.classList.toggle('hidden');
+        });
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                 mobileNav.classList.add('hidden');
+            });
+        });
+    }
+
+    // Function to highlight the current section in the nav
+    function setupScrollSpy() {
+        const sections = document.querySelectorAll('main > section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-30% 0px -70% 0px' });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    }
+
+    // Initialize all functions
+    setupTabs();
+    createDemographicsChart();
+    createFundingChart();
+    setupMobileMenu();
+    setupScrollSpy();
+});
+</script>
+</body>
+</html>

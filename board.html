@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Board | Idea Forge Foundation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .board-card {
+            transition: all 0.3s ease;
+        }
+        .board-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <svg class="w-8 h-8 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a7.5 7.5 0 01-7.5 0c-1.453 0-2.824.22-4.127.638M12 12V6.75m0 5.25A6.01 6.01 0 0013.5 12m-1.5 0A6.01 6.01 0 0110.5 12m3.75-5.478a12.06 12.06 0 014.5 0m-3.75-2.311a7.5 7.5 0 017.5 0c1.453 0 2.824-.22-4.127-.638M12 6.75V3m0 3.75a6.01 6.01 0 00-1.5.189m1.5-.189A6.01 6.01 0 0112 3m0 0a7.5 7.5 0 00-7.5 0c-1.453 0-2.824.22-4.127.638m7.5 14.25L12 18" />
+                    </svg>
+                    <span class="text-2xl font-bold text-gray-900">Idea Forge Foundation</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button class="flex items-center text-gray-600 hover:text-orange-500 transition-colors">
+                            About
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20">
+                            <a href="index.html#about" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-orange-500">Our Mission</a>
+                            <a href="board.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-orange-500">Our Board</a>
+                        </div>
+                    </div>
+                    <a href="campaign.html" class="text-gray-600 hover:text-orange-500 transition-colors">Campaigns</a>
+                    <a href="index.html#programs" class="text-gray-600 hover:text-orange-500 transition-colors">Our Programs</a>
+                    <a href="index.html#involved" class="text-gray-600 hover:text-orange-500 transition-colors">Get Involved</a>
+                    <a href="index.html#contact" class="text-gray-600 hover:text-orange-500 transition-colors">Contact</a>
+                </nav>
+                <a href="index.html#donate" class="hidden md:inline-block bg-orange-500 text-white font-semibold px-5 py-2 rounded-lg cta-button hover:bg-orange-600">
+                    Donate
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Board Section -->
+        <section id="board" class="py-20 md:py-28 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Our Board of Directors</h1>
+                    <p class="text-lg md:text-xl text-gray-600">
+                        Meet the dedicated leaders who volunteer their time and expertise to guide our mission. Their strategic vision and commitment to Oklahoma's future are the cornerstones of our success.
+                    </p>
+                </div>
+
+                <!-- Container for dynamically generated board member cards -->
+                <div id="board-members-container" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Board member cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="mt-8 border-t border-gray-800 pt-8 text-center text-gray-500">
+                <a href="index.html" class="text-white text-xl font-bold">Idea Forge Foundation</a>
+                <p class="mt-4">&copy; 2024 Idea Forge Foundation. All rights reserved. A 501(c)(3) non-profit organization.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- AlpineJS for dropdown functionality -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+    <!-- JavaScript to generate board members from JSON -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // JSON data for board members. To update the board, simply edit this list.
+            const boardMembers = [
+                {
+                    name: "Aria Jenkins",
+                    title: "Board Chair",
+                    bio: "Aria is the founder and CEO of a successful Oklahoma-based tech company. With over 20 years of experience in entrepreneurship, she provides invaluable guidance on our strategic direction and program development.",
+                    imageUrl: "https://placehold.co/400x400/f97316/ffffff?text=A.J."
+                },
+                {
+                    name: "Ben Carter",
+                    title: "Vice Chair & Treasurer",
+                    bio: "As a certified public accountant and partner at a leading financial firm, Ben ensures the foundation's fiscal health and long-term sustainability. He is passionate about empowering small businesses.",
+                    imageUrl: "https://placehold.co/400x400/3b82f6/ffffff?text=B.C."
+                },
+                {
+                    name: "Chloe Rodriguez",
+                    title: "Secretary",
+                    bio: "Chloe is a community development leader with deep roots in Oklahoma's non-profit sector. She specializes in building strategic partnerships that amplify our impact across the state.",
+                    imageUrl: "https://placehold.co/400x400/10b981/ffffff?text=C.R."
+                },
+                {
+                    name: "David Maxwell",
+                    title: "Director",
+                    bio: "David brings a wealth of knowledge from his career in higher education, where he served as the Dean of Engineering. He is dedicated to fostering connections between academia and industry.",
+                    imageUrl: "https://placehold.co/400x400/6366f1/ffffff?text=D.M."
+                },
+                {
+                    name: "Elena Sato",
+                    title: "Director",
+                    bio: "An accomplished venture capitalist, Elena provides expert insight into the investment landscape. She actively mentors startups in our accelerator program on securing funding.",
+                    imageUrl: "https://placehold.co/400x400/8b5cf6/ffffff?text=E.S."
+                },
+                {
+                    name: "Frank Thompson",
+                    title: "Director",
+                    bio: "Frank is a retired manufacturing executive who now dedicates his time to community service. He champions our efforts to support innovation in rural Oklahoma communities.",
+                    imageUrl: "https://placehold.co/400x400/ec4899/ffffff?text=F.T."
+                }
+            ];
+
+            const container = document.getElementById('board-members-container');
+
+            // Loop through the JSON data and create an HTML card for each member
+            boardMembers.forEach(member => {
+                const card = `
+                    <div class="board-card bg-white rounded-lg shadow-md overflow-hidden text-center">
+                        <img src="${member.imageUrl}" alt="Photo of ${member.name}" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-900">${member.name}</h3>
+                            <p class="text-orange-600 font-semibold mb-3">${member.title}</p>
+                            <p class="text-gray-600">${member.bio}</p>
+                        </div>
+                    </div>
+                `;
+                // Append the newly created card to the container
+                container.innerHTML += card;
+            });
+        });
+    </script>
+
+</body>
+</html>

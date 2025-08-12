@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idea Forge Foundation | Forging Oklahoma's Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg {
+            background-color: #111827; /* Dark Gray */
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(251, 146, 60, 0.1), transparent 30%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.1), transparent 30%);
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #fb923c; /* Orange-400 */
+        }
+        .stat-item {
+            border-left: 3px solid #fb923c;
+        }
+        .campaign-card {
+            transition: all 0.3s ease;
+        }
+        .campaign-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+        }
+        .partner-logo {
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+            opacity: 0.6;
+        }
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="flex items-center space-x-2">
+                    <svg class="w-8 h-8 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a7.5 7.5 0 01-7.5 0c-1.453 0-2.824.22-4.127.638M12 12V6.75m0 5.25A6.01 6.01 0 0013.5 12m-1.5 0A6.01 6.01 0 0110.5 12m3.75-5.478a12.06 12.06 0 014.5 0m-3.75-2.311a7.5 7.5 0 017.5 0c1.453 0 2.824-.22-4.127.638M12 6.75V3m0 3.75a6.01 6.01 0 00-1.5.189m1.5-.189A6.01 6.01 0 0112 3m0 0a7.5 7.5 0 00-7.5 0c-1.453 0-2.824.22-4.127.638m7.5 14.25L12 18" />
+                    </svg>
+                    <span class="text-2xl font-bold text-gray-900">Idea Forge Foundation</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button class="flex items-center text-gray-600 hover:text-orange-500 transition-colors">
+                            About
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20">
+                            <a href="#about" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-orange-500">Our Mission</a>
+                            <a href="board.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-orange-500">Our Board</a>
+                        </div>
+                    </div>
+                    <a href="campaign.html" class="text-gray-600 hover:text-orange-500 transition-colors">Campaigns</a>
+                    <a href="#programs" class="text-gray-600 hover:text-orange-500 transition-colors">Our Programs</a>
+                    <a href="#involved" class="text-gray-600 hover:text-orange-500 transition-colors">Get Involved</a>
+                    <a href="#contact" class="text-gray-600 hover:text-orange-500 transition-colors">Contact</a>
+                </nav>
+                <a href="#donate" class="hidden md:inline-block bg-orange-500 text-white font-semibold px-5 py-2 rounded-lg cta-button hover:bg-orange-600">
+                    Donate
+                </a>
+                <button class="md:hidden text-gray-800">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg text-white">
+            <div class="container mx-auto px-6 py-24 md:py-32 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Forging Oklahoma's Future</h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                    We are a non-profit foundation dedicated to empowering Oklahoma's innovators, entrepreneurs, and creators. We provide the resources, mentorship, and community to turn great ideas into reality.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="campaign.html" class="bg-orange-500 text-white font-semibold px-8 py-3 rounded-lg cta-button hover:bg-orange-600">
+                        View Our Campaign
+                    </a>
+                    <a href="#involved" class="bg-gray-700 text-white font-semibold px-8 py-3 rounded-lg cta-button hover:bg-gray-600">
+                        Get Involved
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Featured Campaign Section -->
+        <section id="campaign" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Featured Campaign</h2>
+                    <p class="mt-4 text-lg text-gray-600">Help us launch the next wave of local innovators. Our current campaign is focused on securing the resources for our next Spark Incubator cohort.</p>
+                </div>
+                <div class="max-w-4xl mx-auto">
+                    <a href="campaign.html" class="block bg-white rounded-lg shadow-lg overflow-hidden campaign-card md:flex">
+                        <img class="md:w-1/3 object-cover" src="https://placehold.co/600x400/1e293b/ffffff?text=Innovators+Fund" alt="Oklahoma Innovators Fund">
+                        <div class="p-8 md:p-12 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">The Oklahoma Innovator's Fund</h3>
+                                <p class="text-gray-600 mb-4">This fund will provide seed grants, dedicated lab space, and expert mentorship for 15 promising startups in our 2025 Spark Incubator program. Your support directly empowers local entrepreneurs to build, test, and launch their ventures right here in Oklahoma.</p>
+                            </div>
+                            <div class="text-orange-600 font-bold text-lg hover:underline">
+                                Learn More & Pledge Your Support &rarr;
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20 md:py-28 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img src="https://placehold.co/600x400/f97316/ffffff?text=Collaboration" alt="Team collaborating on a project" class="rounded-lg shadow-xl w-full">
+                    </div>
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Mission: The Spark of Innovation</h2>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            The Idea Forge Foundation was founded on the belief that a single idea can ignite change. Our mission is to build a vibrant ecosystem for innovation across Oklahoma. We strive to break down barriers to entry for aspiring entrepreneurs and provide a structured pathway from concept to market, ensuring that the best ideas have the support they need to flourish and strengthen our communities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Section -->
+        <section id="programs" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Our Programs</h2>
+                    <p class="mt-4 text-lg text-gray-600">We offer a suite of programs designed to support innovators at every stage of their journey.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Program Card 1 -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg feature-card">
+                        <div class="bg-orange-100 text-orange-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a7.5 7.5 0 01-7.5 0c-1.453 0-2.824.22-4.127.638M12 12V6.75m0 5.25A6.01 6.01 0 0013.5 12m-1.5 0A6.01 6.01 0 0110.5 12m3.75-5.478a12.06 12.06 0 014.5 0m-3.75-2.311a7.5 7.5 0 017.5 0c1.453 0 2.824-.22-4.127.638m7.5 14.25L12 18" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">The Spark Incubator</h3>
+                        <p class="text-gray-600 leading-relaxed">Have a groundbreaking idea? Our incubator provides the initial seed funding, mentorship, and validation resources to transform your concept into a viable project.</p>
+                    </div>
+                    <!-- Program Card 2 -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg feature-card">
+                         <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">The Anvil Accelerator</h3>
+                        <p class="text-gray-600 leading-relaxed">For early-stage startups ready to scale. This intensive program offers hands-on guidance, access to our network, and strategic support to accelerate your growth.</p>
+                    </div>
+                    <!-- Program Card 3 -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg feature-card">
+                         <div class="bg-green-100 text-green-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.5-2.228a4.5 4.5 0 00-1.875-2.033M14.25 18.75a9.094 9.094 0 01-3.741-.479 3 3 0 01-4.682-2.72M6.75 15.75a4.5 4.5 0 011.875-2.033m-1.875 2.033a9.094 9.094 0 00-3.741.479 3 3 0 004.682 2.72M12 18.75v-2.25m0-10.5v-2.25m0 5.25v-2.25m0 0h3.75m-3.75 0H8.25m9.75 0a9 9 0 013.75 0M3.75 12a9 9 0 00-3.75 0M12 3v2.25m0 10.5V18" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Community Workshops</h3>
+                        <p class="text-gray-600 leading-relaxed">Open to all, our workshops cover essential topics from business planning and digital marketing to intellectual property, led by industry experts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donate Section -->
+        <section id="donate" class="py-20 md:py-28 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Support the Forge</h2>
+                    <p class="mt-4 text-lg text-gray-600">Your generous contribution empowers Oklahoma's next generation of innovators. Every donation helps us provide the essential resources, mentorship, and support needed to turn bold ideas into thriving enterprises.</p>
+                </div>
+                <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-inner">
+                    <!-- 
+                        DONORBOX EMBED CODE
+                        This is for general donations. Paste your main Donorbox form code here.
+                    -->
+                    <div class="bg-white border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                        <p class="text-gray-500 font-semibold">Your general Donorbox donation form will be embedded here.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get Involved Section -->
+        <section id="involved" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">You Can Shape the Future</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto mb-12">
+                    Whether you're an aspiring innovator, an experienced professional, or a passionate supporter of Oklahoma's growth, there's a place for you at the Idea Forge.
+                </p>
+                <div class="grid md:grid-cols-3 gap-8 text-left">
+                    <div class="border border-gray-200 bg-gray-50 p-8 rounded-lg">
+                        <h3 class="text-xl font-bold mb-3">Donate</h3>
+                        <p class="text-gray-600 mb-6">Your financial contribution provides the critical fuel for our programs and the innovators we support. Help us forge a brighter future.</p>
+                        <a href="#donate" class="text-orange-600 font-semibold hover:underline">Give Today &rarr;</a>
+                    </div>
+                    <div class="border border-gray-200 bg-gray-50 p-8 rounded-lg">
+                        <h3 class="text-xl font-bold mb-3">Volunteer & Mentor</h3>
+                        <p class="text-gray-600 mb-6">Share your expertise and experience. We are always looking for mentors and volunteers to guide our participants and help run our programs.</p>
+                        <a href="#contact" class="text-orange-600 font-semibold hover:underline">Become a Mentor &rarr;</a>
+                    </div>
+                    <div class="border border-gray-200 bg-gray-50 p-8 rounded-lg">
+                        <h3 class="text-xl font-bold mb-3">Partner With Us</h3>
+                        <p class="text-gray-600 mb-6">Corporate partnerships are vital to our mission. Join us to co-host events, sponsor a program, or create unique opportunities for our community.</p>
+                        <a href="#contact" class="text-orange-600 font-semibold hover:underline">Learn About Partnership &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section id="partners" class="py-20 md:py-28 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Our Valued Partners</h2>
+                    <p class="mt-4 text-lg text-gray-600">We are proud to collaborate with leading organizations that share our commitment to innovation and community growth in Oklahoma.</p>
+                </div>
+                <div class="max-w-5xl mx-auto">
+                    <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
+                        <img src="https://placehold.co/200x100/cbd5e1/475569?text=The+Verge" alt="The Verge Logo" class="h-12 partner-logo">
+                        <img src="https://placehold.co/200x100/cbd5e1/475569?text=Techlahoma" alt="Techlahoma Logo" class="h-12 partner-logo">
+                        <img src="https://placehold.co/200x100/cbd5e1/475569?text=Non+Profit+Incubator" alt="Non Profit Incubator Logo" class="h-14 partner-logo">
+                        <!-- Add more partner logos here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-28 bg-white">
+             <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Get in Touch</h2>
+                    <p class="mt-4 text-lg text-gray-600">Have a question or want to connect? We'd love to hear from you.</p>
+                </div>
+                <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+                    <form action="#" method="POST">
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="first-name" class="block text-sm font-medium text-gray-700">First Name</label>
+                                <input type="text" name="first-name" id="first-name" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+                            </div>
+                             <div>
+                                <label for="last-name" class="block text-sm font-medium text-gray-700">Last Name</label>
+                                <input type="text" name="last-name" id="last-name" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="email" name="email" id="email" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                                <textarea name="message" id="message" rows="4" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"></textarea>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-right">
+                            <button type="submit" class="bg-orange-500 text-white font-semibold px-8 py-3 rounded-lg cta-button hover:bg-orange-600">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+             </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Idea Forge Foundation</h3>
+                    <p class="text-gray-400">Forging Oklahoma's future, one idea at a time.</p>
+                    <p class="text-gray-400 mt-4">3217 Brush Creek Rd<br>Oklahoma City, OK 73120</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="campaign.html" class="text-gray-400 hover:text-white">Campaigns</a></li>
+                        <li><a href="index.html#programs" class="text-gray-400 hover:text-white">Programs</a></li>
+                        <li><a href="index.html#involved" class="text-gray-400 hover:text-white">Get Involved</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z"></path></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,5H15.5V8.5H18.5V5M14,5H11V14H14V5M10,5H7V11H10V5M15.5,10H18.5V19H15.5V10M14,15.5H11V19H14V15.5M10,12.5H7V19H10V12.5Z"></path></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2024 Idea Forge Foundation. All rights reserved. A 501(c)(3) non-profit organization.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AlpineJS for dropdown functionality -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+</body>
+</html>
