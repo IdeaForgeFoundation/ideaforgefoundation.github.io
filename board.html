@@ -101,45 +101,56 @@
     <!-- JavaScript to generate board members from JSON -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // JSON data for board members. To update the board, simply edit this list.
+            // =========================================================================
+            //  EDIT BOARD MEMBERS HERE
+            // =========================================================================
+            // To update the board members, simply edit the list below.
+            // - To add a new member, copy an existing block (from { to }).
+            // - To remove a member, delete their block.
+            // - To change a photo, add the image to the `/images` folder and
+            //   update the `imageUrl` path (e.g., "images/your-photo.jpg").
+            // =========================================================================
             const boardMembers = [
                 {
                     name: "Aria Jenkins",
                     title: "Board Chair",
                     bio: "Aria is the founder and CEO of a successful Oklahoma-based tech company. With over 20 years of experience in entrepreneurship, she provides invaluable guidance on our strategic direction and program development.",
-                    imageUrl: "https://placehold.co/400x400/f97316/ffffff?text=A.J."
+                    imageUrl: "images/person_placeholder_1.jpg" // Example: "images/aria_jenkins.jpg"
                 },
                 {
                     name: "Ben Carter",
                     title: "Vice Chair & Treasurer",
                     bio: "As a certified public accountant and partner at a leading financial firm, Ben ensures the foundation's fiscal health and long-term sustainability. He is passionate about empowering small businesses.",
-                    imageUrl: "https://placehold.co/400x400/3b82f6/ffffff?text=B.C."
+                    imageUrl: "images/person_placeholder_2.jpg" // Example: "images/ben_carter.jpg"
                 },
                 {
                     name: "Chloe Rodriguez",
                     title: "Secretary",
                     bio: "Chloe is a community development leader with deep roots in Oklahoma's non-profit sector. She specializes in building strategic partnerships that amplify our impact across the state.",
-                    imageUrl: "https://placehold.co/400x400/10b981/ffffff?text=C.R."
+                    imageUrl: "images/person_placeholder_3.jpg" // Example: "images/chloe_rodriguez.jpg"
                 },
                 {
                     name: "David Maxwell",
                     title: "Director",
                     bio: "David brings a wealth of knowledge from his career in higher education, where he served as the Dean of Engineering. He is dedicated to fostering connections between academia and industry.",
-                    imageUrl: "https://placehold.co/400x400/6366f1/ffffff?text=D.M."
+                    imageUrl: "images/person_placeholder_4.jpg" // Example: "images/david_maxwell.jpg"
                 },
                 {
                     name: "Elena Sato",
                     title: "Director",
                     bio: "An accomplished venture capitalist, Elena provides expert insight into the investment landscape. She actively mentors startups in our accelerator program on securing funding.",
-                    imageUrl: "https://placehold.co/400x400/8b5cf6/ffffff?text=E.S."
+                    imageUrl: "images/person_placeholder_5.jpg" // Example: "images/elena_sato.jpg"
                 },
                 {
                     name: "Frank Thompson",
                     title: "Director",
                     bio: "Frank is a retired manufacturing executive who now dedicates his time to community service. He champions our efforts to support innovation in rural Oklahoma communities.",
-                    imageUrl: "https://placehold.co/400x400/ec4899/ffffff?text=F.T."
+                    imageUrl: "images/person_placeholder_6.jpg" // Example: "images/frank_thompson.jpg"
                 }
             ];
+            // =========================================================================
+            //  END OF EDITABLE SECTION
+            // =========================================================================
 
             const container = document.getElementById('board-members-container');
 
