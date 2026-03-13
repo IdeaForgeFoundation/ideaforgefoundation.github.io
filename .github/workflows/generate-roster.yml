@@ -1,0 +1,32 @@
+name: Generate IFF Roster
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Run daily at midnight
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Run Roster Generation Script
+        env:
+          GOOGLE_SHEET_URL: ${{ secrets.GOOGLE_SHEET_URL }}
+          IFF_ROSTER_SALT: ${{ secrets.IFF_ROSTER_SALT }}
+        run: python scripts/zoho_integration/generate_roster.py
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add iff-roster.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Automated update of iff-roster.json" && git push)
