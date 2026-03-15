@@ -82,7 +82,7 @@
 <body class="bg-gray-50 text-gray-800">
 
     <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm" x-data="{ mobileOpen: false }">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <a href="#" class="flex items-center space-x-2">
@@ -106,6 +106,7 @@
                     <a href="membership.html" class="text-gray-600 hover:text-orange-500 transition-colors">Membership</a>
                     <a href="#principles" class="text-gray-600 hover:text-orange-500 transition-colors">Our Principles</a>
                     <a href="#programs" class="text-gray-600 hover:text-orange-500 transition-colors">Our Programs</a>
+                    <a href="campaign.html" class="text-gray-600 hover:text-orange-500 transition-colors">Campaign</a>
                     <a href="initiatives.html" class="text-gray-600 hover:text-orange-500 transition-colors">Initiatives</a>
                     <a href="#involved" class="text-gray-600 hover:text-orange-500 transition-colors">Get Involved</a>
                     <a href="#contact" class="text-gray-600 hover:text-orange-500 transition-colors">Contact</a>
@@ -113,11 +114,28 @@
                 <a href="#donate" class="hidden md:inline-block bg-orange-500 text-white font-semibold px-5 py-2 rounded-lg cta-button hover:bg-orange-600">
                     Donate
                 </a>
-                <button class="md:hidden text-gray-800">
+                <button @click="mobileOpen = !mobileOpen" class="md:hidden text-gray-800">
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
                 </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div x-show="mobileOpen" x-transition class="md:hidden mt-4 pb-4">
+                <a href="#about" class="block py-2 text-gray-600 hover:text-orange-500">About Us</a>
+                <a href="board.html" class="block py-2 text-gray-600 hover:text-orange-500">Our Board</a>
+                <a href="bylaws.html" class="block py-2 text-gray-600 hover:text-orange-500">Bylaws</a>
+                <a href="membership.html" class="block py-2 text-gray-600 hover:text-orange-500">Membership</a>
+                <a href="#principles" class="block py-2 text-gray-600 hover:text-orange-500">Our Principles</a>
+                <a href="#programs" class="block py-2 text-gray-600 hover:text-orange-500">Our Programs</a>
+                <a href="campaign.html" class="block py-2 text-gray-600 hover:text-orange-500">Campaign</a>
+                <a href="initiatives.html" class="block py-2 text-gray-600 hover:text-orange-500">Initiatives</a>
+                <a href="#involved" class="block py-2 text-gray-600 hover:text-orange-500">Get Involved</a>
+                <a href="#contact" class="block py-2 text-gray-600 hover:text-orange-500">Contact</a>
+                <a href="#donate" class="block mt-4 text-center bg-orange-500 text-white font-semibold px-5 py-2 rounded-lg hover:bg-orange-600">
+                    Donate
+                </a>
             </div>
         </div>
     </header>
