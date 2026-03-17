@@ -219,10 +219,8 @@ Peter serves as a board member of the Idea Forge Foundation (501(c)(3)), a nonpr
 His technical background spans CAD/CAM, CNC programming, fabrication, robotics, and AI/ML development. He is currently studying digital twin robotics via Unity, ROS, and ML-Agents, with a focus on sim-to-real training and application. Much of his work is directed toward developing sustainable solutions for modern challenges, from renewable energy systems to eco-integrated architecture.
 
 Through his projects and leadership, Peter aims to lower barriers of entry for innovators, accelerate start-ups rooted in mentorship and community, and help design a future where technology, sustainability, and humanity move forward together. `,
-                    imageUrl: "images/Peter_Shryock.jpg" // Example: "images/david_maxwell.jpg"
-
-
-
+                    imageUrl: "images/Peter_Shryock.jpg", // Example: "images/david_maxwell.jpg"
+                    imagePosition: "object-top"
                 }
             ];
             // =========================================================================
@@ -233,9 +231,10 @@ Through his projects and leadership, Peter aims to lower barriers of entry for i
 
             // Loop through the JSON data and create an HTML card for each member
             boardMembers.forEach(member => {
+                const objectPosition = member.imagePosition || 'object-center';
                 const card = `
                     <div class="board-card bg-white rounded-lg shadow-md overflow-hidden text-center">
-                        <img src="${member.imageUrl}" alt="Photo of ${member.name}" class="w-full h-64 object-cover">
+                        <img src="${member.imageUrl}" alt="Photo of ${member.name}" class="w-full h-64 object-cover ${objectPosition}">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-900">${member.name}</h3>
                             <p class="text-orange-600 font-semibold mb-3">${member.title}</p>
