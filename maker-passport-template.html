@@ -130,8 +130,58 @@
             color: rgba(17, 17, 17, 0.3);
         }
 
+        /* Print Controls */
+        .print-controls {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #222;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .print-btn {
+            background-color: #f43f5e; /* Rose 500 */
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 14px;
+            font-family: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            text-transform: uppercase;
+            transition: background-color 0.2s;
+        }
+
+        .print-btn:hover {
+            background-color: #e11d48; /* Rose 600 */
+        }
+
+        .print-help {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        /* Adjust body padding so top page isn't hidden under controls */
+        body {
+            padding-top: 5rem;
+        }
+
         /* Print Specifics */
         @media print {
+            .print-controls {
+                display: none !important;
+            }
+
             @page {
                 size: 5.5in 8.5in;
                 margin: 0;
@@ -156,6 +206,11 @@
     </style>
 </head>
 <body>
+
+    <div class="print-controls">
+        <button class="print-btn" onclick="window.print()">Print Passport</button>
+        <span class="print-help">For best results, print on Half Letter (5.5 x 8.5 in) cardstock without margins.</span>
+    </div>
 
     <div class="page">
         <div>
