@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maker Passport - Idea Forge Foundation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+        :root {
+            --bg-color: #f4f4f0; /* Slight natural paper tint for screen viewing */
+            --ink-color: #111111;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: #333; /* Dark background for the screen to make pages pop */
+            color: var(--ink-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            gap: 2rem;
+        }
+
+        /* The Dot Grid Pattern */
+        .dot-grid {
+            background-image: radial-gradient(var(--ink-color) 1px, transparent 1px);
+            background-size: 18px 18px;
+            background-position: 0 0;
+        }
+
+        /* Page Setup: Half Letter (5.5 x 8.5 inches) */
+        .page {
+            width: 5.5in;
+            height: 8.5in;
+            background-color: var(--bg-color);
+            position: relative;
+            padding: 0.5in;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 24px; text-align: center; margin: 1rem 0; }
+        h2 { font-size: 16px; margin-bottom: 0.5rem; }
+        p { font-size: 12px; line-height: 1.5; margin-bottom: 0.5rem; }
+
+        .italics { font-style: italic; }
+        .text-center { text-align: center; }
+        .bold { font-weight: 700; }
+
+        /* Structural Elements */
+        .border-box {
+            border: 2px solid var(--ink-color);
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header-split {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--ink-color);
+            padding-bottom: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-split {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            border-top: 2px solid var(--ink-color);
+            padding-top: 0.25rem;
+            margin-top: auto;
+        }
+
+        .fill-line {
+            display: inline-block;
+            border-bottom: 1px solid var(--ink-color);
+            width: 100%;
+            min-height: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .checkbox-list {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-list li {
+            font-size: 12px;
+            margin-bottom: 0.5rem;
+        }
+
+        .checkbox-list li::before {
+            content: "[ ] ";
+            font-weight: 700;
+        }
+
+        .stamp-box {
+            border: 2px dashed var(--ink-color);
+            height: 2.5in;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 1rem;
+            background-color: rgba(255,255,255,0.5); /* slight white backing so grid doesn't compete with stamp */
+        }
+
+        .stamp-text {
+            font-size: 14px;
+            font-weight: 700;
+            color: rgba(17, 17, 17, 0.3);
+        }
+
+        /* Print Specifics */
+        @media print {
+            @page {
+                size: 5.5in 8.5in;
+                margin: 0;
+            }
+            body {
+                background-color: transparent;
+                padding: 0;
+                display: block;
+            }
+            .page {
+                box-shadow: none;
+                page-break-after: always;
+                background-color: transparent !important; /* Let the physical paper color show */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            /* Force the dot grid to print */
+            .dot-grid {
+                background-image: radial-gradient(var(--ink-color) 1px, transparent 1px) !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <div>
+            <div class="header-split">
+                <span>VOL: 01</span>
+                <span>STATUS: HIGHLY EXPERIMENTAL</span>
+            </div>
+            <br><br><br><br>
+            <h1>OFFICIAL FIELD GUIDE<br>& MAKER PASSPORT</h1>
+            <p class="text-center italics">For the wildly curious and mildly dangerous.</p>
+        </div>
+
+        <div class="border-box text-center" style="margin: 2rem 0;">
+            <p class="bold" style="font-size: 40px; margin: 1rem 0;">IFF</p>
+            <p>WARNING: MAY CONTAIN TRACES OF SOLDER FLUX</p>
+        </div>
+
+        <div class="footer-split">
+            <span>ISSUED BY: IDEA FORGE FOUNDATION</span>
+            <span>DO NOT SUBMERGE IN COFFEE</span>
+        </div>
+    </div>
+
+    <div class="page dot-grid">
+        <div>
+            <div class="header-split">
+                <span>DOCUMENT CONTROL</span>
+                <span>NON-TRANSFERABLE</span>
+            </div>
+            <h2>THIS LOGBOOK BELONGS TO:</h2>
+            <br>
+            <p>MAKER NAME / ALIAS:</p>
+            <span class="fill-line"></span>
+            <br><br>
+            <p>CURRENT HYPER-FIXATION:</p>
+            <span class="fill-line"></span>
+            <span class="fill-line"></span>
+
+            <br><br>
+            <h2>PREFERRED TOOLS OF DESTRUCTION:</h2>
+            <ul class="checkbox-list">
+                <li>Soldering Irons & Microcontrollers</li>
+                <li>Power Tools & Sawdust</li>
+                <li>Code & Keyboards</li>
+                <li>Hot Glue & Hope</li>
+            </ul>
+            <br>
+            <p class="bold">LIFETIME MAGIC SMOKE RELEASES: [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]</p>
+        </div>
+
+        <div class="border-box" style="background-color: var(--bg-color);">
+            <p class="bold">THE DIRECTIVE:</p>
+            <p>Travel the local ecosystem. Build cool things. Help others. Collect the stamps. Do not anger the CNC router.</p>
+        </div>
+    </div>
+
+    <div class="page dot-grid">
+        <div class="header-split">
+            <span>OKC ECOSYSTEM NODE</span>
+            <span>VERIFIED STOP</span>
+        </div>
+        <h2>ECOSYSTEM OUTPOST: PROJECT 3810</h2>
+        <p><span class="bold">VIBE CHECK:</span> Heavy machinery, brilliant startups, and a killer community.</p>
+        <br>
+        <p class="bold">KNOWN RESOURCES:</p>
+        <p>- Laser Cutting & 3D Printing</p>
+        <p>- Woodshop & Fabrication Hub</p>
+        <p>- Entrepreneurial Mentorship</p>
+        <br>
+        <p><span class="bold">SIDE QUEST:</span> Ask the front desk about their wildest hardware prototype.</p>
+
+        <div class="stamp-box">
+            <span class="stamp-text">PROOF OF VISIT<br>(STAMP HERE)</span>
+        </div>
+    </div>
+
+    <div class="page dot-grid">
+        <div class="header-split">
+            <span>OKC ECOSYSTEM NODE</span>
+            <span>VERIFIED STOP</span>
+        </div>
+        <h2>ECOSYSTEM OUTPOST: THE VERGE OKC</h2>
+        <p><span class="bold">VIBE CHECK:</span> The ultimate collision space for founders, funders, and ecosystem builders.</p>
+        <br>
+        <p class="bold">KNOWN RESOURCES:</p>
+        <p>- Startup Incubation</p>
+        <p>- Co-working & Collaboration</p>
+        <p>- Unmatched Networking Events</p>
+        <br>
+        <p><span class="bold">SIDE QUEST:</span> Pitch your worst idea to a stranger in the breakroom.</p>
+
+        <div class="stamp-box">
+            <span class="stamp-text">PROOF OF VISIT<br>(STAMP HERE)</span>
+        </div>
+    </div>
+
+    <div class="page dot-grid">
+        <div class="header-split">
+            <span>OKC ECOSYSTEM NODE</span>
+            <span>VERIFIED STOP</span>
+        </div>
+        <h2>ECOSYSTEM OUTPOST: STARSPACE46</h2>
+        <p><span class="bold">VIBE CHECK:</span> Oklahoma City's premier hub for developers, tech meetups, and civic hackers.</p>
+        <br>
+        <p class="bold">KNOWN RESOURCES:</p>
+        <p>- Techlahoma Meetup HQ</p>
+        <p>- Lightning-Fast Fiber Internet</p>
+        <p>- Late-Night Coding Fuel</p>
+        <br>
+        <p><span class="bold">SIDE QUEST:</span> Find the most obscure programming sticker on a laptop.</p>
+
+        <div class="stamp-box">
+            <span class="stamp-text">PROOF OF VISIT<br>(STAMP HERE)</span>
+        </div>
+    </div>
+
+    <div class="page dot-grid">
+        <div class="header-split">
+            <span>UNDISCOVERED NODE</span>
+            <span>AWAITING DATA</span>
+        </div>
+        <h2>ECOSYSTEM OUTPOST: ____________________</h2>
+        <br>
+        <p class="bold">VIBE CHECK:</p>
+        <span class="fill-line"></span>
+        <span class="fill-line"></span>
+        <br><br>
+        <p class="bold">KNOWN RESOURCES:</p>
+        <span class="fill-line"></span>
+        <span class="fill-line"></span>
+        <span class="fill-line"></span>
+
+        <div class="stamp-box">
+            <span class="stamp-text">PROOF OF VISIT<br>(STAMP HERE)</span>
+        </div>
+    </div>
+
+    <div class="page dot-grid">
+        <div class="header-split">
+            <span>APPENDIX A</span>
+            <span>UNAUTHORIZED DATA</span>
+        </div>
+        <h2>>_ SCHEMATICS & TERRIBLE IDEAS</h2>
+        <p class="italics">Use this space to sketch things that probably violate the laws of physics.</p>
+        </div>
+
+    <div class="page">
+        <div class="header-split">
+            <span>END OF TRANSMISSION</span>
+            <span>EOF</span>
+        </div>
+
+        <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+            <h1 style="font-size: 36px; margin-bottom: 2rem;">[ IFF ]</h1>
+            <p class="bold">IDEA FORGE FOUNDATION</p>
+            <p>Forging Oklahoma's future, one idea at a time.</p>
+        </div>
+
+        <div class="border-box text-center">
+            <p class="bold">IF FOUND, PLEASE RETURN TO:</p>
+            <p>Any affiliated Maker Ecosystem Outpost, or initiate contact at:</p>
+            <p class="bold" style="margin-top: 0.5rem;">FOUNDATION@IDEA-FORGE.ORG</p>
+        </div>
+
+        <div class="footer-split">
+            <span>WWW.IDEA-FORGE.ORG</span>
+            <span>REV: 2026.1</span>
+        </div>
+    </div>
+
+</body>
+</html>
