@@ -42,35 +42,12 @@
         .equipment-filter.active { background-color: #F97316; color: white; }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-800">
-<div class="flex">
-    <!-- Desktop Sidebar -->
-    <aside id="desktop-nav" class="hidden lg:block w-64 bg-white border-r border-stone-200 p-6 fixed top-0 left-0 h-full">
-        <a href="index.html" class="block">
-            <h2 class="text-2xl font-bold text-stone-900">The Shop</h2>
-            <p class="text-sm text-stone-500">by Idea Forge Foundation</p>
-        </a>
-        <nav class="mt-8">
-            <ul class="space-y-2">
-                <li><a href="#vision" class="nav-link block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Our Vision</a></li>
-                <li><a href="#offerings" class="nav-link block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Our Offerings</a></li>
-                <li><a href="#market" class="nav-link block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Our Community</a></li>
-                <li><a href="#projects" class="nav-link block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Signature Projects</a></li>
-                <li><a href="#principles" class="nav-link block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Our Principles</a></li>
-                <li><a href="#roadmap" class="nav-link block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Our Roadmap</a></li>
-                <li><a href="#support" class="nav-link block px-4 py-2 rounded-lg text-stone-600 hover:bg-orange-500 hover:text-white transition-colors duration-200">Get Involved</a></li>
-            </ul>
-        </nav>
-        <div class="absolute bottom-4 left-6 right-6 text-xs text-stone-400">
-            <p>&copy; 2026 Idea Forge Foundation</p>
-            <p class="mt-1">A registered 501(c)(3)</p>
-            <a href="mailto:foundation@idea-forge.org" class="mt-2 block hover:text-orange-500">foundation@idea-forge.org</a>
-            <a href="index.html" class="mt-2 block text-orange-600 hover:underline">Back to Main Site</a>
-        </div>
-    </aside>
-
-    <!-- Mobile Header -->
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm" x-data="{ mobileOpen: false }">
+<body class="bg-stone-50 text-stone-800" x-data="{ presentationMode: false }">
+<div class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm transition-transform duration-300"
+            :class="{ '-translate-y-full': presentationMode }"
+            x-data="{ mobileOpen: false }">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <a href="index.html" class="flex items-center space-x-2">
@@ -127,8 +104,19 @@
     </header>
 
     <!-- Main Content -->
-    <main class="w-full lg:ml-64 p-6 pt-24 lg:pt-6">
-        <section id="hero" class="text-center min-h-[60vh] flex flex-col items-center justify-center bg-white rounded-2xl shadow-sm p-8">
+    <main class="w-full flex-grow p-6 pt-24 lg:pt-6 transition-all duration-300"
+          :class="{'p-0 pt-0 lg:pt-0 max-w-none': presentationMode, 'max-w-7xl mx-auto': !presentationMode}">
+
+        <!-- Presentation Toggle Button (Floating) -->
+        <button @click="presentationMode = !presentationMode"
+                class="fixed bottom-6 right-6 z-50 bg-stone-800 text-white p-3 rounded-full shadow-lg hover:bg-orange-500 transition-colors duration-200"
+                title="Toggle Presentation Mode">
+            <svg x-show="!presentationMode" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+            <svg x-show="presentationMode" style="display: none;" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 14h4v4M4 14l5 5m11-5h-4v4m4-4l-5 5M4 10H8V6M4 10l5-5m11 5h-4V6m4 4l-5-5"></path></svg>
+        </button>
+
+        <section id="hero" class="text-center min-h-[60vh] flex flex-col items-center justify-center bg-white rounded-2xl shadow-sm p-8 transition-all duration-300"
+                 :class="{'min-h-screen rounded-none m-0': presentationMode, 'my-6': !presentationMode}">
             <h1 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-orange-500 to-amber-500 text-transparent bg-clip-text">Progress through Creation.</h1>
             <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-stone-600">
                 Idea Forge Foundation's mission is to progress art, science, & engineering through education and shared resources to cultivate the next generation of artists, makers, and creators in Oklahoma City.
@@ -138,8 +126,9 @@
             </a>
         </section>
 
-        <section id="vision" class="py-16 md:py-24">
-            <div class="text-center mb-12">
+        <section id="vision" class="py-16 md:py-24 transition-all duration-300 flex flex-col justify-center"
+                 :class="{'min-h-screen bg-white': presentationMode}">
+            <div class="text-center mb-12" :class="{'mt-auto': presentationMode}">
                 <h2 class="text-3xl md:text-4xl font-bold text-stone-900">Our Vision for OKC</h2>
                 <p class="mt-4 max-w-2xl mx-auto text-stone-600">We see "The Shop" as a catalyst for a more creative, innovative, and entrepreneurial Oklahoma City. This is the future we are building together.</p>
             </div>
@@ -172,8 +161,9 @@
             </div>
         </section>
         
-        <section id="offerings" class="py-16 md:py-24 bg-white rounded-2xl shadow-sm p-8">
-            <div class="text-center mb-12">
+        <section id="offerings" class="py-16 md:py-24 bg-white rounded-2xl shadow-sm p-8 transition-all duration-300 flex flex-col justify-center"
+                 :class="{'min-h-screen rounded-none m-0': presentationMode, 'my-6': !presentationMode}">
+            <div class="text-center mb-12" :class="{'mt-auto': presentationMode}">
                 <h2 class="text-3xl md:text-4xl font-bold text-stone-900">What is "The Shop"?</h2>
                 <p class="mt-4 max-w-2xl mx-auto text-stone-600">"The Shop" is our solution: a community-powered hub of tools, knowledge, and collaboration. Explore our three core pillars: the equipment we provide, the workshops we host, and the memberships that make it all accessible.</p>
             </div>
@@ -189,8 +179,9 @@
             <div id="tab-content"></div>
         </section>
 
-        <section id="market" class="py-16 md:py-24">
-            <div class="text-center mb-12">
+        <section id="market" class="py-16 md:py-24 transition-all duration-300 flex flex-col justify-center"
+                 :class="{'min-h-screen bg-white': presentationMode}">
+            <div class="text-center mb-12" :class="{'mt-auto': presentationMode}">
                 <h2 class="text-3xl md:text-4xl font-bold text-stone-900">Our Community & Market</h2>
                 <p class="mt-4 max-w-2xl mx-auto text-stone-600">"The Shop" is designed for the diverse and growing population of Oklahoma City. We fill a unique niche by providing in-depth resources and a strong community focus that complements existing local institutions.</p>
             </div>
@@ -243,8 +234,9 @@
         </section>
 
         <!-- NEW SECTION: Signature Projects -->
-        <section id="projects" class="py-16 md:py-24">
-            <div class="text-center mb-12">
+        <section id="projects" class="py-16 md:py-24 transition-all duration-300 flex flex-col justify-center"
+                 :class="{'min-h-screen bg-stone-50': presentationMode}">
+            <div class="text-center mb-12" :class="{'mt-auto': presentationMode}">
                 <h2 class="text-3xl md:text-4xl font-bold text-stone-900">Signature Projects & Initiatives</h2>
                 <p class="mt-4 max-w-2xl mx-auto text-stone-600">Beyond our core offerings, we pursue unique, community-focused projects that leverage our members' skills for the greater good.</p>
             </div>
@@ -262,8 +254,9 @@
             </div>
         </section>
 
-        <section id="principles" class="py-16 md:py-24 bg-stone-800 text-white rounded-2xl shadow-sm p-8">
-            <div class="text-center mb-12">
+        <section id="principles" class="py-16 md:py-24 bg-stone-800 text-white rounded-2xl shadow-sm p-8 transition-all duration-300 flex flex-col justify-center"
+                 :class="{'min-h-screen rounded-none m-0': presentationMode, 'my-6': !presentationMode}">
+            <div class="text-center mb-12" :class="{'mt-auto': presentationMode}">
                 <h2 class="text-3xl md:text-4xl font-bold">Our Guiding Principles</h2>
                 <p class="mt-4 max-w-2xl mx-auto text-stone-300">Idea Forge Foundation operates with a clear and unwavering set of values. These principles are our moral compass, ensuring we always serve our community's best interests.</p>
             </div>
@@ -295,8 +288,9 @@
             </div>
         </section>
 
-        <section id="roadmap" class="py-16 md:py-24">
-             <div class="text-center mb-12">
+        <section id="roadmap" class="py-16 md:py-24 transition-all duration-300 flex flex-col justify-center"
+                 :class="{'min-h-screen bg-white': presentationMode}">
+             <div class="text-center mb-12" :class="{'mt-auto': presentationMode}">
                 <h2 class="text-3xl md:text-4xl font-bold text-stone-900">Our Roadmap to Impact</h2>
                 <p class="mt-4 max-w-2xl mx-auto text-stone-600">We have a clear, phased plan to launch "The Shop" and grow our impact. Our goals are ambitious but achievable with community support.</p>
             </div>
@@ -337,8 +331,9 @@
             </div>
         </section>
 
-        <section id="support" class="py-16 md:py-24 bg-orange-500 text-white rounded-2xl shadow-sm p-8">
-            <div class="text-center mb-12">
+        <section id="support" class="py-16 md:py-24 bg-orange-500 text-white rounded-2xl shadow-sm p-8 transition-all duration-300 flex flex-col justify-center"
+                 :class="{'min-h-screen rounded-none m-0': presentationMode, 'my-6': !presentationMode}">
+            <div class="text-center mb-12" :class="{'mt-auto': presentationMode}">
                 <h2 class="text-3xl md:text-4xl font-bold">Join Us in Building The Future</h2>
                 <p class="mt-4 max-w-2xl mx-auto">Your support is vital to our mission. Whether through a donation, volunteering your time, or partnering with us, you can help build "The Shop" and empower Oklahoma City's creators.</p>
             </div>
