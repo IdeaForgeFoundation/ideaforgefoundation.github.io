@@ -32,17 +32,17 @@
         /* The Dot Grid Pattern */
         .dot-grid {
             background-image: radial-gradient(grey 1px, transparent 1px);
-            background-size: 18px 18px;
+            background-size: 14px 14px;
             background-position: 0 0;
         }
 
         /* Page Setup: Half Letter (5.5 x 8.5 inches) */
         .page {
-            width: 5.5in;
-            height: 8.5in;
+            width: 4.25in;
+            height: 5.5in;
             background-color: var(--bg-color);
             position: relative;
-            padding: 0.5in;
+            padding: 0.35in;
             box-shadow: 0 4px 8px rgba(0,0,0,0.5);
             overflow: hidden;
             display: flex;
@@ -56,9 +56,9 @@
             line-height: 1.2;
         }
 
-        h1 { font-size: 26px; text-align: center; margin: 1.5rem 0; letter-spacing: -0.5px; }
-        h2 { font-size: 18px; margin-bottom: 0.75rem; letter-spacing: -0.25px; }
-        p { font-size: 13px; line-height: 1.6; margin-bottom: 0.5rem; }
+        h1 { font-size: 20px; text-align: center; margin: 1.5rem 0; letter-spacing: -0.5px; }
+        h2 { font-size: 14px; margin-bottom: 0.75rem; letter-spacing: -0.25px; }
+        p { font-size: 10px; line-height: 1.6; margin-bottom: 0.5rem; }
 
         .italics { font-style: italic; }
         .text-center { text-align: center; }
@@ -66,18 +66,18 @@
 
         /* Structural Elements */
         .border-box {
-            border: 3px solid var(--ink-color);
-            padding: 0.75rem;
+            border: 2px solid var(--ink-color);
+            padding: 0.5rem;
             margin-bottom: 1.25rem;
         }
 
         .header-split {
             display: flex;
             justify-content: space-between;
-            font-size: 11px;
+            font-size: 8px;
             font-weight: 700;
             letter-spacing: 0.5px;
-            border-bottom: 3px solid var(--ink-color);
+            border-bottom: 2px solid var(--ink-color);
             padding-bottom: 0.35rem;
             margin-bottom: 1.25rem;
         }
@@ -85,10 +85,10 @@
         .footer-split {
             display: flex;
             justify-content: space-between;
-            font-size: 11px;
+            font-size: 8px;
             letter-spacing: 0.5px;
             font-weight: 700;
-            border-top: 3px solid var(--ink-color);
+            border-top: 2px solid var(--ink-color);
             padding-top: 0.35rem;
             margin-top: auto;
         }
@@ -107,7 +107,7 @@
         }
 
         .checkbox-list li {
-            font-size: 13px;
+            font-size: 10px;
             margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
@@ -116,13 +116,13 @@
         .checkbox-list li::before {
             content: "[ ]";
             font-weight: 700;
-            font-size: 16px;
+            font-size: 12px;
             margin-right: 0.5rem;
         }
 
         .stamp-box {
-            border: 3px dashed var(--ink-color);
-            height: 2.5in;
+            border: 2px dashed var(--ink-color);
+            height: 1.5in;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -132,7 +132,7 @@
         }
 
         .stamp-text {
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 700;
             letter-spacing: 1px;
             color: rgba(17, 17, 17, 0.25);
@@ -191,7 +191,7 @@
             }
 
             @page {
-                size: 5.5in 8.5in;
+                size: 4.25in 5.5in;
                 margin: 0;
             }
             body {
@@ -217,7 +217,7 @@
 
     <div class="print-controls">
         <button class="print-btn" onclick="window.print()">Print Passport</button>
-        <span class="print-help">For best results, print on Half Letter (5.5 x 8.5 in) cardstock without margins.</span>
+        <span class="print-help">For best results, print on Letter (8.5 x 11 in) cardstock using '4 pages per sheet'.</span>
     </div>
 
     <div class="page">
@@ -232,7 +232,7 @@
         </div>
 
         <div class="border-box text-center" style="margin: 2rem 0;">
-            <p class="bold" style="font-size: 40px; margin: 1rem 0;">IFF</p>
+            <p class="bold" style="font-size: 30px; margin: 1rem 0;">IFF</p>
             <p>WARNING: MAY CONTAIN TRACES OF SOLDER FLUX</p>
         </div>
 
@@ -372,7 +372,7 @@
         </div>
 
         <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; text-align: center;">
-            <h1 style="font-size: 36px; margin-bottom: 2rem;">[ IFF ]</h1>
+            <h1 style="font-size: 26px; margin-bottom: 2rem;">[ IFF ]</h1>
             <p class="bold">IDEA FORGE FOUNDATION</p>
             <p>Forging Oklahoma's future, one idea at a time.</p>
         </div>
