@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idea Forge Foundation | Open Innovation Lab (OIL)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg {
+            background-color: #111827; /* Dark Gray */
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(251, 146, 60, 0.1), transparent 30%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.1), transparent 30%);
+        }
+
+        .cta-button {
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.15' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 20px 20px;
+        }
+        .cta-button:hover {
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm" x-data="{ mobileOpen: false }">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <svg class="w-8 h-8 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a7.5 7.5 0 01-7.5 0c-1.453 0-2.824.22-4.127.638M12 12V6.75m0 5.25A6.01 6.01 0 0013.5 12m-1.5 0A6.01 6.01 0 0110.5 12m3.75-5.478a12.06 12.06 0 014.5 0m-3.75-2.311a7.5 7.5 0 017.5 0c1.453 0 2.824-.22-4.127.638M12 6.75V3m0 3.75a6.01 6.01 0 00-1.5.189m1.5-.189A6.01 6.01 0 0112 3m0 0a7.5 7.5 0 00-7.5 0c-1.453 0-2.824.22-4.127.638m7.5 14.25L12 18" />
+                    </svg>
+                    <span class="text-2xl font-bold text-gray-900">Idea Forge Foundation</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <div class="relative" x-data="{ open: false }" @click.away="open = false">
+                        <button @click="open = !open" class="flex items-center text-gray-600 hover:text-orange-500 transition-colors">
+                            About
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20" style="display: none;">
+                            <a href="index.html#about" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-orange-500">Our Mission</a>
+                            <a href="board.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-orange-500">Our Board</a>
+                            <a href="bylaws.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-orange-500">Bylaws</a>
+                        </div>
+                    </div>
+                    <a href="membership.html" class="text-gray-600 hover:text-orange-500 transition-colors">Membership</a>
+                    <a href="index.html#principles" class="text-gray-600 hover:text-orange-500 transition-colors">Our Principles</a>
+                    <a href="index.html#programs" class="text-gray-600 hover:text-orange-500 transition-colors">Our Programs</a>
+                    <a href="campaign.html" class="text-gray-600 hover:text-orange-500 transition-colors">Campaign</a>
+                    <a href="initiatives.html" class="text-gray-600 hover:text-orange-500 transition-colors">Initiatives</a>
+                    <a href="index.html#involved" class="text-gray-600 hover:text-orange-500 transition-colors">Get Involved</a>
+                    <a href="index.html#contact" class="text-gray-600 hover:text-orange-500 transition-colors">Contact</a>
+                </nav>
+                <a href="index.html#donate" class="hidden md:inline-block bg-orange-500 text-white font-semibold px-5 py-2 rounded-lg cta-button hover:bg-orange-600">
+                    Donate
+                </a>
+                <button @click="mobileOpen = !mobileOpen" class="md:hidden text-gray-800">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div x-show="mobileOpen" x-transition class="md:hidden mt-4 pb-4">
+                <a href="index.html#about" class="block py-2 text-gray-600 hover:text-orange-500">About Us</a>
+                <a href="board.html" class="block py-2 text-gray-600 hover:text-orange-500">Our Board</a>
+                <a href="bylaws.html" class="block py-2 text-gray-600 hover:text-orange-500">Bylaws</a>
+                <a href="membership.html" class="block py-2 text-gray-600 hover:text-orange-500">Membership</a>
+                <a href="index.html#principles" class="block py-2 text-gray-600 hover:text-orange-500">Our Principles</a>
+                <a href="index.html#programs" class="block py-2 text-gray-600 hover:text-orange-500">Our Programs</a>
+                <a href="campaign.html" class="block py-2 text-gray-600 hover:text-orange-500">Campaign</a>
+                <a href="initiatives.html" class="block py-2 text-gray-600 hover:text-orange-500">Initiatives</a>
+                <a href="index.html#involved" class="block py-2 text-gray-600 hover:text-orange-500">Get Involved</a>
+                <a href="index.html#contact" class="block py-2 text-gray-600 hover:text-orange-500">Contact</a>
+                <a href="index.html#donate" class="block mt-4 text-center bg-orange-500 text-white font-semibold px-5 py-2 rounded-lg hover:bg-orange-600">
+                    Donate
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg text-white">
+            <div class="container mx-auto px-6 py-24 md:py-32 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Open Innovation Lab (OIL)</h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                    A collaborative, standing program dedicated to open-source hardware and community-driven tech projects.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="membership.html" class="bg-orange-500 text-white font-semibold px-8 py-3 rounded-lg cta-button hover:bg-orange-600">
+                        Join the Lab
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl text-left">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">About the Program</h2>
+                <div class="prose max-w-none text-gray-600 mb-12">
+                    <p class="text-lg mb-4">OIL operates on a model of active contribution. We believe in building, learning, and sharing together.</p>
+                    <p class="text-lg mb-4"><strong>Active Contributors:</strong> Members actively building, breaking, or mentoring within a current lab project maintain full access to lab resources and voting rights on project directions.</p>
+                    <p class="text-lg mb-4"><strong>Alumni Network:</strong> We know that life, jobs, and side projects ebb and flow. If you step away from active lab projects for a season, your status gracefully transitions to Alumni. You are always welcome in our community channels and can reactivate your lab access whenever you are ready to dive back into a build.</p>
+                </div>
+
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Current Research Programs</h2>
+                <div class="grid grid-cols-1 gap-8">
+                    <!-- Biochar-Toilet Project -->
+                    <div class="bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-bold text-gray-900">Biochar Toilet</h3>
+                            <a href="https://github.com/PubInv/Biochar-Toilet" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-900">
+                                <i class="fa fa-github text-2xl"></i>
+                            </a>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            A reliable toilet that can quickly reduce human fecal matter to completely sanitary biochar. This project aims to make the poorest people of the Earth healthier by providing a solution where Western-style sewage systems are expensive and impractical.
+                        </p>
+                        <p class="text-gray-600 mb-6">
+                            Our approach focuses on a sealed reaction vessel using electricity as an input to safely transform waste. The process involves drying the sample using "flashing" (rapid decompression to create steam) and then raising the temperature to produce biochar in the absence of oxygen.
+                        </p>
+                        <a href="https://github.com/PubInv/Biochar-Toilet" target="_blank" rel="noopener noreferrer" class="inline-block bg-orange-500 text-white font-semibold px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors cta-button">
+                            View Project on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Idea Forge Foundation</h3>
+                    <p class="text-gray-400">Forging Oklahoma's future, one idea at a time.</p>
+                    <p class="text-gray-400 mt-4">Oklahoma City, OK</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="membership.html" class="text-gray-400 hover:text-white">Membership</a></li>
+                        <li><a href="index.html#programs" class="text-gray-400 hover:text-white">Programs</a></li>
+                        <li><a href="initiatives.html" class="text-gray-400 hover:text-white">Initiatives</a></li>
+                        <li><a href="index.html#involved" class="text-gray-400 hover:text-white">Get Involved</a></li>
+                        <li><a href="bylaws.html" class="text-gray-400 hover:text-white">Bylaws</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <a href="mailto:foundation@idea-forge.org" class="text-gray-400 hover:text-white">foundation@idea-forge.org</a>
+                    <div class="flex space-x-4 mt-4 text-2xl">
+                        <a href="https://x.com/theforge46" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white"><i class="fa fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/IDEAFORGEFOUNDATION" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2026 Idea Forge Foundation. All rights reserved.</p>
+                <p class="mt-2">Idea Forge Foundation is a registered 501(c)(3) non-profit organization.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AlpineJS for dropdown functionality -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+</body>
+</html>
