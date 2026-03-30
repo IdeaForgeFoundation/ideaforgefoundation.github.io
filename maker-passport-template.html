@@ -45,9 +45,9 @@
             line-height: 1.2;
         }
 
-        h1 { font-size: 26px; text-align: center; margin: 1.5rem 0; letter-spacing: -0.5px; }
-        h2 { font-size: 18px; margin-bottom: 0.75rem; letter-spacing: -0.25px; }
-        p { font-size: 13px; line-height: 1.6; margin-bottom: 0.5rem; }
+        h1 { font-size: 20px; text-align: center; margin: 1rem 0; letter-spacing: -0.5px; }
+        h2 { font-size: 14px; margin-bottom: 0.5rem; letter-spacing: -0.25px; }
+        p { font-size: 10px; line-height: 1.4; margin-bottom: 0.5rem; }
 
         .italics { font-style: italic; }
         .text-center { text-align: center; }
@@ -55,49 +55,49 @@
 
         /* Structural Elements */
         .border-box {
-            border: 3px solid var(--ink-color);
-            padding: 0.75rem;
-            margin-bottom: 1.25rem;
+            border: 2px solid var(--ink-color);
+            padding: 0.5rem;
+            margin-bottom: 1rem;
         }
 
         .header-split {
             display: flex;
             justify-content: space-between;
-            font-size: 11px;
+            font-size: 9px;
             font-weight: 700;
             letter-spacing: 0.5px;
-            border-bottom: 3px solid var(--ink-color);
-            padding-bottom: 0.35rem;
-            margin-bottom: 1.25rem;
+            border-bottom: 2px solid var(--ink-color);
+            padding-bottom: 0.25rem;
+            margin-bottom: 1rem;
         }
 
         .footer-split {
             display: flex;
             justify-content: space-between;
-            font-size: 11px;
+            font-size: 9px;
             letter-spacing: 0.5px;
             font-weight: 700;
-            border-top: 3px solid var(--ink-color);
-            padding-top: 0.35rem;
+            border-top: 2px solid var(--ink-color);
+            padding-top: 0.25rem;
             margin-top: auto;
         }
 
         .fill-line {
             display: inline-block;
-            border-bottom: 2px solid var(--ink-color);
+            border-bottom: 1.5px solid var(--ink-color);
             width: 100%;
-            min-height: 1.5rem;
-            margin-bottom: 0.75rem;
+            min-height: 1.25rem;
+            margin-bottom: 0.5rem;
         }
 
         .checkbox-list {
             list-style: none;
-            margin-top: 0.75rem;
+            margin-top: 0.5rem;
         }
 
         .checkbox-list li {
-            font-size: 13px;
-            margin-bottom: 0.75rem;
+            font-size: 10px;
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
         }
@@ -105,23 +105,23 @@
         .checkbox-list li::before {
             content: "[ ]";
             font-weight: 700;
-            font-size: 16px;
+            font-size: 12px;
             margin-right: 0.5rem;
         }
 
         .stamp-box {
-            border: 3px dashed var(--ink-color);
-            height: 2.5in;
+            border: 2px dashed var(--ink-color);
+            height: 1.5in;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             background-color: rgba(255,255,255,0.85); /* Solid white backing so grid doesn't compete with stamp */
         }
 
         .stamp-text {
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 700;
             letter-spacing: 1px;
             color: rgba(17, 17, 17, 0.25);
@@ -176,8 +176,8 @@
         /* Print Specifics */
         .spread {
             display: flex;
-            width: 11in;
-            height: 8.5in;
+            width: 8.5in;
+            height: 5.5in;
             margin: 0 auto;
             background-color: var(--bg-color);
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -202,7 +202,7 @@
         .page-half {
             width: 50%;
             height: 100%;
-            padding: 0.5in;
+            padding: 0.3in;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -221,7 +221,7 @@
             }
 
             @page {
-                size: 11in 8.5in;
+                size: 8.5in 5.5in;
                 margin: 0;
             }
             @page portrait {
@@ -514,7 +514,8 @@ function applyImposition() {
             const stripDiv = document.createElement('div');
             stripDiv.style.display = 'flex';
             stripDiv.style.width = '100%';
-            stripDiv.style.height = sheetSpreads.length > 1 ? '50%' : '100%';
+            // If stacking multiple strips, each strip takes half the 11in height (i.e. 5.5in)
+            stripDiv.style.height = sheetSpreads.length > 1 ? '5.5in' : '100%';
             stripDiv.style.position = 'relative';
 
             // Add the dashed center line for folding if multiple strips
