@@ -224,6 +224,13 @@
                 size: 11in 8.5in;
                 margin: 0;
             }
+            @page portrait {
+                size: 8.5in 11in;
+                margin: 0;
+            }
+            body.portrait-mode {
+                page: portrait;
+            }
             body {
                 background-color: transparent;
                 padding: 0;
@@ -249,7 +256,7 @@
 </style>
 </head>
 <body>
-<div class="print-controls"><button class="print-btn" onclick="window.print()">Print Passport</button><select id="layout-mode" onchange="applyImposition()" style="padding: 0.5rem; font-family: inherit; font-size: 14px; border-radius: 4px; border: none; margin-left: 1rem; cursor: pointer;"><option value="cut-stack">Cut &amp; Stack Layout</option><option value="saddle-stitch">Saddle Stitch Layout</option></select><span class="print-help" id="print-help-text" style="margin-left: 1rem;"></span></div>
+<div class="print-controls"><button class="print-btn" onclick="window.print()">Print Passport</button><select id="layout-mode" onchange="applyImposition()" style="padding: 0.5rem; font-family: inherit; font-size: 14px; border-radius: 4px; border: none; margin-left: 1rem; cursor: pointer;"><option value="cut-stack">Cut &amp; Stack Layout</option><option value="saddle-stitch">Saddle Stitch Layout</option><option value="cover-2up">Cover Only (2-up)</option></select><span class="print-help" id="print-help-text" style="margin-left: 1rem;"></span></div>
 
 
 
@@ -381,16 +388,19 @@
 </div>
 <h2>&gt;_ SCHEMATICS &amp; TERRIBLE IDEAS</h2>
 <p class="italics">Use this space to sketch things that probably violate the laws of physics.</p>
-</div><div class="page">
+</div><div class="page dot-grid">
 <div class="header-split">
 <span>END OF TRANSMISSION</span>
 <span>EOF</span>
 </div>
-<div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; text-align: center;">
-<h1 style="font-size: 36px; margin-bottom: 2rem;">[ IFF ]</h1>
-<p class="bold">IDEA FORGE FOUNDATION</p>
-<p>Forging Oklahoma's future, one idea at a time.</p>
-</div>
+<h2>NOTES &amp; SCHEMATICS</h2>
+<span class="fill-line"></span>
+<span class="fill-line"></span>
+<span class="fill-line"></span>
+<span class="fill-line"></span>
+<span class="fill-line"></span>
+<span class="fill-line"></span>
+<br/>
 <div class="border-box text-center">
 <p class="bold">IF FOUND, PLEASE RETURN TO:</p>
 <p>Any affiliated Maker Ecosystem Outpost, or initiate contact at:</p>
@@ -427,6 +437,7 @@ function applyImposition() {
 
     const N = originalPages.length;
     const spreads = [];
+    const spreadWrappers = [];
 
     if (mode === 'saddle-stitch') {
         helpText.innerText = 'For saddle stitch: Print double-sided (flip on short edge). Stack, fold in half, and staple on the fold.';
@@ -443,25 +454,107 @@ function applyImposition() {
             // Back side of sheet (swapped to align correctly when flipped on short edge)
             spreads.push([ originalPages[half + 2*i + 1], originalPages[2*i + 1] ]);
         }
+    } else if (mode === 'cover-2up') {
+        helpText.innerText = 'For cover only: Print double-sided (flip on short edge) on special waterproof paper. Cut in half horizontally, fold in half.';
+
+        // Ensure we have exactly 8 pages (the standard passport length)
+        // If not, fall back safely
+        const backCover = originalPages[7] || originalPages[originalPages.length - 1];
+        const frontCover = originalPages[0];
+        const insideFrontCover = originalPages[1];
+        const insideBackCover = originalPages[6] || originalPages[originalPages.length - 2];
+
+        // Since we are cutting the 11x8.5 sheet in half horizontally to get two 8.5x5.5 strips,
+        // we must output the same strip TWICE on the 11x8.5 sheet: top and bottom.
+        // CSS handles placing these spreads automatically if we just push two.
+        // The front side has: Back Cover (left) and Front Cover (right)
+        spreads.push([ backCover, frontCover ]);
+        spreads.push([ backCover, frontCover ]); // The second strip on the same front side sheet
+
+        // The back side has: Inside Back Cover (left) and Inside Front Cover (right)
+        // because when flipping on the short edge (bottom to top), the right side of the front page
+        // remains on the right side of the back page. The Inside Front Cover needs to be behind the Front Cover.
+        spreads.push([ insideBackCover, insideFrontCover ]);
+        spreads.push([ insideBackCover, insideFrontCover ]); // The second strip on the same back side sheet
     }
 
-    spreads.forEach(pair => {
-        const spreadDiv = document.createElement('div');
-        spreadDiv.className = 'spread';
+    // Handle Page Orientation CSS
+    const oldStyle = document.getElementById('dynamic-page-style');
+    if (oldStyle) oldStyle.remove();
 
-        pair.forEach(page => {
-            const halfDiv = document.createElement('div');
-            halfDiv.className = 'page-half';
+    // Group spreads into "sheets" if it's 2-up, else 1 spread = 1 sheet
+    if (mode === 'cover-2up') {
+        // Force portrait orientation in print via a dynamic style block,
+        // as @page rules don't always respect body classes perfectly across browsers
+        const style = document.createElement('style');
+        style.id = 'dynamic-page-style';
+        style.innerHTML = '@media print { @page { size: 8.5in 11in !important; margin: 0; } }';
+        document.head.appendChild(style);
 
-            if (page.isDotGrid) {
-                halfDiv.classList.add('dot-grid');
+        spreadWrappers.push([spreads[0], spreads[1]]); // Front sheet (top & bottom)
+        spreadWrappers.push([spreads[2], spreads[3]]); // Back sheet (top & bottom)
+    } else {
+        spreads.forEach(s => spreadWrappers.push([s]));
+    }
+
+    spreadWrappers.forEach(sheetSpreads => {
+        const sheetDiv = document.createElement('div');
+        sheetDiv.className = 'spread';
+
+        // Use flex column to stack strips vertically if there are multiple strips on a sheet
+        if (sheetSpreads.length > 1) {
+             sheetDiv.style.flexDirection = 'column';
+             // remove default spread::after since we are doing two strips
+             sheetDiv.style.border = 'none';
+             sheetDiv.style.width = '8.5in';
+             sheetDiv.style.height = '11in';
+        }
+
+        sheetSpreads.forEach(pair => {
+            const stripDiv = document.createElement('div');
+            stripDiv.style.display = 'flex';
+            stripDiv.style.width = '100%';
+            stripDiv.style.height = sheetSpreads.length > 1 ? '50%' : '100%';
+            stripDiv.style.position = 'relative';
+
+            // Add the dashed center line for folding if multiple strips
+            if (sheetSpreads.length > 1) {
+                const lineDiv = document.createElement('div');
+                lineDiv.style.position = 'absolute';
+                lineDiv.style.top = '0';
+                lineDiv.style.bottom = '0';
+                lineDiv.style.left = '50%';
+                lineDiv.style.borderLeft = '1px dashed rgba(0,0,0,0.15)';
+                lineDiv.style.zIndex = '10';
+                lineDiv.style.pointerEvents = 'none';
+                stripDiv.appendChild(lineDiv);
             }
 
-            halfDiv.innerHTML = page.html;
-            spreadDiv.appendChild(halfDiv);
+            pair.forEach(page => {
+                const halfDiv = document.createElement('div');
+                halfDiv.className = 'page-half';
+
+                if (page.isDotGrid) {
+                    halfDiv.classList.add('dot-grid');
+                }
+
+                halfDiv.innerHTML = page.html;
+                stripDiv.appendChild(halfDiv);
+            });
+            sheetDiv.appendChild(stripDiv);
         });
 
-        layout.appendChild(spreadDiv);
+        // Re-add generic center line for single strip sheets if needed, handled by CSS already, but
+        // need to hide it if we did custom lineDivs.
+        if (sheetSpreads.length > 1) {
+            // Apply a small hack to hide pseudo element for 2up mode
+            const style = document.createElement('style');
+            style.innerHTML = '.spread-2up::after { display: none !important; }';
+            sheetDiv.classList.add('spread-2up');
+            sheetDiv.appendChild(style);
+        }
+
+        layout.appendChild(sheetDiv);
     });
 }
 
