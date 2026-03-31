@@ -45,9 +45,9 @@
             line-height: 1.2;
         }
 
-        h1 { font-size: 20px; text-align: center; margin: 1rem 0; letter-spacing: -0.5px; }
-        h2 { font-size: 14px; margin-bottom: 0.5rem; letter-spacing: -0.25px; }
-        p { font-size: 10px; line-height: 1.4; margin-bottom: 0.5rem; }
+        h1 { font-size: 26px; text-align: center; margin: 1.5rem 0; letter-spacing: -0.5px; }
+        h2 { font-size: 18px; margin-bottom: 0.75rem; letter-spacing: -0.25px; }
+        p { font-size: 13px; line-height: 1.6; margin-bottom: 0.5rem; }
 
         .italics { font-style: italic; }
         .text-center { text-align: center; }
@@ -55,49 +55,49 @@
 
         /* Structural Elements */
         .border-box {
-            border: 2px solid var(--ink-color);
-            padding: 0.5rem;
-            margin-bottom: 1rem;
+            border: 3px solid var(--ink-color);
+            padding: 0.75rem;
+            margin-bottom: 1.25rem;
         }
 
         .header-split {
             display: flex;
             justify-content: space-between;
-            font-size: 9px;
+            font-size: 11px;
             font-weight: 700;
             letter-spacing: 0.5px;
-            border-bottom: 2px solid var(--ink-color);
-            padding-bottom: 0.25rem;
-            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--ink-color);
+            padding-bottom: 0.35rem;
+            margin-bottom: 1.25rem;
         }
 
         .footer-split {
             display: flex;
             justify-content: space-between;
-            font-size: 9px;
+            font-size: 11px;
             letter-spacing: 0.5px;
             font-weight: 700;
-            border-top: 2px solid var(--ink-color);
-            padding-top: 0.25rem;
+            border-top: 3px solid var(--ink-color);
+            padding-top: 0.35rem;
             margin-top: auto;
         }
 
         .fill-line {
             display: inline-block;
-            border-bottom: 1.5px solid var(--ink-color);
+            border-bottom: 2px solid var(--ink-color);
             width: 100%;
-            min-height: 1.25rem;
-            margin-bottom: 0.5rem;
+            min-height: 1.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .checkbox-list {
             list-style: none;
-            margin-top: 0.5rem;
+            margin-top: 0.75rem;
         }
 
         .checkbox-list li {
-            font-size: 10px;
-            margin-bottom: 0.5rem;
+            font-size: 13px;
+            margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
         }
@@ -105,23 +105,23 @@
         .checkbox-list li::before {
             content: "[ ]";
             font-weight: 700;
-            font-size: 12px;
+            font-size: 16px;
             margin-right: 0.5rem;
         }
 
         .stamp-box {
-            border: 2px dashed var(--ink-color);
-            height: 1.5in;
+            border: 3px dashed var(--ink-color);
+            height: 2.5in;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             background-color: rgba(255,255,255,0.85); /* Solid white backing so grid doesn't compete with stamp */
         }
 
         .stamp-text {
-            font-size: 14px;
+            font-size: 18px;
             font-weight: 700;
             letter-spacing: 1px;
             color: rgba(17, 17, 17, 0.25);
@@ -176,8 +176,8 @@
         /* Print Specifics */
         .spread {
             display: flex;
-            width: 8.5in;
-            height: 5.5in;
+            width: 11in;
+            height: 8.5in;
             margin: 0 auto;
             background-color: var(--bg-color);
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -202,7 +202,7 @@
         .page-half {
             width: 50%;
             height: 100%;
-            padding: 0.3in;
+            padding: 0.5in;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -220,20 +220,16 @@
                 display: none !important;
             }
 
+            /* Default page size. Dynamically overridden by JavaScript depending on layout mode. */
             @page {
-                size: 8.5in 5.5in;
+                size: 11in 8.5in;
                 margin: 0;
             }
-            @page portrait {
-                size: 8.5in 11in;
-                margin: 0;
-            }
-            body.portrait-mode {
-                page: portrait;
-            }
+
             body {
                 background-color: transparent;
                 padding: 0;
+                margin: 0;
                 display: block;
             }
             .spread {
@@ -253,6 +249,123 @@
                 display: none !important;
             }
         }
+
+        .sheet-2up {
+            width: 8.5in;
+            height: 11in;
+            margin: 0 auto 2rem auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* or space-evenly */
+            align-items: center;
+            page-break-after: always;
+            box-sizing: border-box;
+        }
+
+        .spread-2up {
+            display: flex;
+            width: 8.5in;
+            height: 5.5in;
+            margin: 0;
+            background-color: var(--bg-color);
+            position: relative;
+            box-sizing: border-box;
+            page-break-after: avoid;
+            page-break-inside: avoid;
+            border-bottom: 1px dashed rgba(0,0,0,0.15); /* cut line between top and bottom */
+        }
+
+        .spread-2up:last-child {
+            border-bottom: none;
+        }
+
+        .spread-2up::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            border-left: 1px dashed rgba(0,0,0,0.15);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .spread-2up .page-half {
+            width: 50%;
+            height: 100%;
+            padding: 0.35in; /* bring back a bit of padding */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            font-size: 0.55em; /* Make font slightly smaller to fit better */
+        }
+
+        .spread-2up .field-group {
+            margin-bottom: 0.5rem; /* reduce margin for fields */
+        }
+
+        .spread-2up .stamp-box {
+            width: 2rem; /* slightly smaller stamps */
+            height: 2rem;
+            margin: 0.2rem;
+        }
+
+        .spread-2up .warning-box {
+            padding: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        /* Adjust specific elements inside spread-2up natively */
+        .spread-2up .stamp-box {
+            width: 2.5rem; /* slightly smaller stamps */
+            height: 2.5rem;
+        }
+
+        .spread-2up h1 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .spread-2up h2 {
+            font-size: 0.85rem;
+        }
+
+        .spread-2up .brand-mark {
+            font-size: 1.5rem;
+        }
+
+        .spread-2up .field-group {
+            margin-bottom: 0.75rem;
+        }
+
+        @media print {
+            .sheet-2up {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                height: 100vh; /* Exactly one page */
+                padding: 0;
+                justify-content: center;
+            }
+            .spread-2up {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .spread-2up::after {
+                border-left: 1px dashed rgba(0,0,0,0.3);
+            }
+            .spread-2up {
+                border-bottom: 1px dashed rgba(0,0,0,0.3);
+            }
+            .spread-2up:last-child {
+                border-bottom: none;
+            }
+        }
+
 </style>
 </head>
 <body>
@@ -388,19 +501,16 @@
 </div>
 <h2>&gt;_ SCHEMATICS &amp; TERRIBLE IDEAS</h2>
 <p class="italics">Use this space to sketch things that probably violate the laws of physics.</p>
-</div><div class="page dot-grid">
+</div><div class="page">
 <div class="header-split">
 <span>END OF TRANSMISSION</span>
 <span>EOF</span>
 </div>
-<h2>NOTES &amp; SCHEMATICS</h2>
-<span class="fill-line"></span>
-<span class="fill-line"></span>
-<span class="fill-line"></span>
-<span class="fill-line"></span>
-<span class="fill-line"></span>
-<span class="fill-line"></span>
-<br/>
+<div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+<h1 style="font-size: 36px; margin-bottom: 2rem;">[ IFF ]</h1>
+<p class="bold">IDEA FORGE FOUNDATION</p>
+<p>Forging Oklahoma's future, one idea at a time.</p>
+</div>
 <div class="border-box text-center">
 <p class="bold">IF FOUND, PLEASE RETURN TO:</p>
 <p>Any affiliated Maker Ecosystem Outpost, or initiate contact at:</p>
@@ -417,6 +527,20 @@ function applyImposition() {
     const layout = document.getElementById('print-layout');
     const mode = document.getElementById('layout-mode').value;
     const helpText = document.getElementById('print-help-text');
+
+    // Update @page size dynamically based on mode
+    let pageStyle = document.getElementById('dynamic-page-style');
+    if (!pageStyle) {
+        pageStyle = document.createElement('style');
+        pageStyle.id = 'dynamic-page-style';
+        document.head.appendChild(pageStyle);
+    }
+
+    if (mode === 'cover-2up') {
+        pageStyle.innerHTML = '@media print { @page { size: 8.5in 11in; margin: 0; } }';
+    } else {
+        pageStyle.innerHTML = '@media print { @page { size: 11in 8.5in; margin: 0; } }';
+    }
 
     layout.innerHTML = '';
 
@@ -435,11 +559,25 @@ function applyImposition() {
         });
     }
 
+
     const N = originalPages.length;
     const spreads = [];
-    const spreadWrappers = [];
 
-    if (mode === 'saddle-stitch') {
+    if (mode === 'cover-2up') {
+        helpText.innerText = 'For Cover 2-Up: Prints two copies of the cover on a single 8.5x11 sheet. Print double-sided (flip on long edge).';
+
+        // Page 0 = Front Cover, Page 1 = Inside Front
+        // Page N-2 = Inside Back, Page N-1 = Back Cover
+
+        // Front side of sheet: Two copies of Outer Cover Spread [Back Cover, Front Cover]
+        spreads.push([ originalPages[N - 1], originalPages[0] ]);
+        spreads.push([ originalPages[N - 1], originalPages[0] ]);
+
+        // Back side of sheet: Two copies of Inner Cover Spread [Inside Front, Inside Back]
+        spreads.push([ originalPages[1], originalPages[N - 2] ]);
+        spreads.push([ originalPages[1], originalPages[N - 2] ]);
+
+    } else if (mode === 'saddle-stitch') {
         helpText.innerText = 'For saddle stitch: Print double-sided (flip on short edge). Stack, fold in half, and staple on the fold.';
         for (let i = 0; i < N / 4; i++) {
             spreads.push([ originalPages[N - 1 - 2*i], originalPages[0 + 2*i] ]);
@@ -454,86 +592,38 @@ function applyImposition() {
             // Back side of sheet (swapped to align correctly when flipped on short edge)
             spreads.push([ originalPages[half + 2*i + 1], originalPages[2*i + 1] ]);
         }
-    } else if (mode === 'cover-2up') {
-        helpText.innerText = 'For cover only: Print double-sided (flip on short edge) on special waterproof paper. Cut in half horizontally, fold in half.';
-
-        // Ensure we have exactly 8 pages (the standard passport length)
-        // If not, fall back safely
-        const backCover = originalPages[7] || originalPages[originalPages.length - 1];
-        const frontCover = originalPages[0];
-        const insideFrontCover = originalPages[1];
-        const insideBackCover = originalPages[6] || originalPages[originalPages.length - 2];
-
-        // Since we are cutting the 11x8.5 sheet in half horizontally to get two 8.5x5.5 strips,
-        // we must output the same strip TWICE on the 11x8.5 sheet: top and bottom.
-        // CSS handles placing these spreads automatically if we just push two.
-        // The front side has: Back Cover (left) and Front Cover (right)
-        spreads.push([ backCover, frontCover ]);
-        spreads.push([ backCover, frontCover ]); // The second strip on the same front side sheet
-
-        // The back side has: Inside Back Cover (left) and Inside Front Cover (right)
-        // because when flipping on the short edge (bottom to top), the right side of the front page
-        // remains on the right side of the back page. The Inside Front Cover needs to be behind the Front Cover.
-        spreads.push([ insideBackCover, insideFrontCover ]);
-        spreads.push([ insideBackCover, insideFrontCover ]); // The second strip on the same back side sheet
     }
 
-    // Handle Page Orientation CSS
-    const oldStyle = document.getElementById('dynamic-page-style');
-    if (oldStyle) oldStyle.remove();
 
-    // Group spreads into "sheets" if it's 2-up, else 1 spread = 1 sheet
     if (mode === 'cover-2up') {
-        // Force portrait orientation in print via a dynamic style block,
-        // as @page rules don't always respect body classes perfectly across browsers
-        const style = document.createElement('style');
-        style.id = 'dynamic-page-style';
-        style.innerHTML = '@media print { @page { size: 8.5in 11in !important; margin: 0; } }';
-        document.head.appendChild(style);
+        // Wrap every two spreads into an 8.5x11 sheet
+        for (let i = 0; i < spreads.length; i += 2) {
+            const sheetDiv = document.createElement('div');
+            sheetDiv.className = 'sheet-2up';
 
-        spreadWrappers.push([spreads[0], spreads[1]]); // Front sheet (top & bottom)
-        spreadWrappers.push([spreads[2], spreads[3]]); // Back sheet (top & bottom)
-    } else {
-        spreads.forEach(s => spreadWrappers.push([s]));
-    }
+            for(let j = 0; j < 2; j++) {
+                if (i + j < spreads.length) {
+                    const pair = spreads[i + j];
+                    const spreadDiv = document.createElement('div');
+                    spreadDiv.className = 'spread-2up';
 
-    spreadWrappers.forEach(sheetSpreads => {
-        const sheetDiv = document.createElement('div');
-        sheetDiv.className = 'spread';
+                    pair.forEach(page => {
+                        const halfDiv = document.createElement('div');
+                        halfDiv.className = 'page-half';
+                        if (page.isDotGrid) halfDiv.classList.add('dot-grid');
+                        halfDiv.innerHTML = page.html;
+                        spreadDiv.appendChild(halfDiv);
+                    });
 
-        // Use flex column to stack strips vertically if there are multiple strips on a sheet
-        if (sheetSpreads.length > 1) {
-             sheetDiv.style.flexDirection = 'column';
-             // remove default spread::after since we are doing two strips
-             sheetDiv.style.border = 'none';
-             sheetDiv.style.width = '100%';
-             sheetDiv.style.height = '100vh'; // Screen view
-             sheetDiv.style.overflow = 'hidden';
-             sheetDiv.style.boxSizing = 'border-box';
-        }
-
-        sheetSpreads.forEach(pair => {
-            const stripDiv = document.createElement('div');
-            stripDiv.style.display = 'flex';
-            stripDiv.style.width = '100%';
-            // If stacking multiple strips, each strip takes exactly half the height
-            stripDiv.style.height = sheetSpreads.length > 1 ? '50%' : '100%';
-            stripDiv.style.position = 'relative';
-            stripDiv.style.overflow = 'hidden';
-            stripDiv.style.boxSizing = 'border-box';
-
-            // Add the dashed center line for folding if multiple strips
-            if (sheetSpreads.length > 1) {
-                const lineDiv = document.createElement('div');
-                lineDiv.style.position = 'absolute';
-                lineDiv.style.top = '0';
-                lineDiv.style.bottom = '0';
-                lineDiv.style.left = '50%';
-                lineDiv.style.borderLeft = '1px dashed rgba(0,0,0,0.15)';
-                lineDiv.style.zIndex = '10';
-                lineDiv.style.pointerEvents = 'none';
-                stripDiv.appendChild(lineDiv);
+                    sheetDiv.appendChild(spreadDiv);
+                }
             }
+            layout.appendChild(sheetDiv);
+        }
+    } else {
+        spreads.forEach(pair => {
+            const spreadDiv = document.createElement('div');
+            spreadDiv.className = 'spread';
 
             pair.forEach(page => {
                 const halfDiv = document.createElement('div');
@@ -544,36 +634,14 @@ function applyImposition() {
                 }
 
                 halfDiv.innerHTML = page.html;
-                stripDiv.appendChild(halfDiv);
+                spreadDiv.appendChild(halfDiv);
             });
-            sheetDiv.appendChild(stripDiv);
+
+            layout.appendChild(spreadDiv);
         });
-
-        // Re-add generic center line for single strip sheets if needed, handled by CSS already, but
-        // need to hide it if we did custom lineDivs.
-        if (sheetSpreads.length > 1) {
-            // Apply a small hack to hide pseudo element for 2up mode
-            const style = document.createElement('style');
-            style.innerHTML = `
-                .spread-2up::after { display: none !important; }
-                @media print {
-                    .spread-2up {
-                        width: 100% !important;
-                        height: 100vh !important;
-                        margin: 0 !important;
-                    }
-                    .spread-2up > div {
-                        height: 50vh !important;
-                    }
-                }
-            `;
-            sheetDiv.classList.add('spread-2up');
-            sheetDiv.appendChild(style);
-        }
-
-        layout.appendChild(sheetDiv);
-    });
+    }
 }
+
 
 document.addEventListener('DOMContentLoaded', applyImposition);
 </script>
