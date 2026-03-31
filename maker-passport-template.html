@@ -506,17 +506,21 @@ function applyImposition() {
              sheetDiv.style.flexDirection = 'column';
              // remove default spread::after since we are doing two strips
              sheetDiv.style.border = 'none';
-             sheetDiv.style.width = '8.5in';
-             sheetDiv.style.height = '11in';
+             sheetDiv.style.width = '100%';
+             sheetDiv.style.height = '100vh'; // Screen view
+             sheetDiv.style.overflow = 'hidden';
+             sheetDiv.style.boxSizing = 'border-box';
         }
 
         sheetSpreads.forEach(pair => {
             const stripDiv = document.createElement('div');
             stripDiv.style.display = 'flex';
             stripDiv.style.width = '100%';
-            // If stacking multiple strips, each strip takes half the 11in height (i.e. 5.5in)
-            stripDiv.style.height = sheetSpreads.length > 1 ? '5.5in' : '100%';
+            // If stacking multiple strips, each strip takes exactly half the height
+            stripDiv.style.height = sheetSpreads.length > 1 ? '50%' : '100%';
             stripDiv.style.position = 'relative';
+            stripDiv.style.overflow = 'hidden';
+            stripDiv.style.boxSizing = 'border-box';
 
             // Add the dashed center line for folding if multiple strips
             if (sheetSpreads.length > 1) {
@@ -550,7 +554,19 @@ function applyImposition() {
         if (sheetSpreads.length > 1) {
             // Apply a small hack to hide pseudo element for 2up mode
             const style = document.createElement('style');
-            style.innerHTML = '.spread-2up::after { display: none !important; }';
+            style.innerHTML = `
+                .spread-2up::after { display: none !important; }
+                @media print {
+                    .spread-2up {
+                        width: 100% !important;
+                        height: 100vh !important;
+                        margin: 0 !important;
+                    }
+                    .spread-2up > div {
+                        height: 50vh !important;
+                    }
+                }
+            `;
             sheetDiv.classList.add('spread-2up');
             sheetDiv.appendChild(style);
         }
