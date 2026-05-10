@@ -151,9 +151,10 @@
                     </p>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto items-center">
+
+                <div class="max-w-3xl mx-auto mb-16">
                     <div class="bg-gray-50 p-8 rounded-lg shadow-lg border border-gray-200">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Membership Benefits</h2>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Membership Benefits</h2>
                         <ul class="space-y-4">
                             <li class="flex items-start">
                                 <svg class="w-6 h-6 text-orange-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -173,37 +174,92 @@
                             </li>
                         </ul>
                     </div>
-
-                    <div class="text-center">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Ready to Join?</h2>
-                        <p class="text-gray-600 mb-8">
-                            We are currently processing new memberships via email. Click below to start your application. Please let us know if you are interested in needs-based assistance.
-                        </p>
-                        <a href="mailto:foundation@idea-forge.org?subject=Membership Inquiry&body=Hi Idea Forge Foundation,%0D%0A%0D%0AI'm interested in becoming a member!%0D%0A%0D%0AMy Name:%0D%0AMy Interest (e.g., Woodshop, General Support):%0D%0AAny questions:%0D%0A" class="inline-block bg-orange-500 text-white font-semibold px-8 py-4 rounded-lg cta-button hover:bg-orange-600 text-lg shadow-lg">
-                            Sign Up via Email
-                        </a>
-                    </div>
                 </div>
 
-                <!-- Pay It Forward Section -->
-                <div class="mt-16 max-w-4xl mx-auto">
-                    <div class="bg-teal-50 border border-teal-100 p-8 rounded-lg shadow-sm">
-                        <div class="md:flex md:items-start md:space-x-8">
-                            <div class="mb-6 md:mb-0 md:w-1/2">
-                                <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                                    <svg class="w-6 h-6 text-teal-600 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" /></svg>
-                                    Pay It Forward: Community-Supported Access
-                                </h2>
-                                <p class="text-gray-700 leading-relaxed mb-4">Innovation shouldn't be gated by income. When you join Idea Forge, you can opt to become a Community Builder by adding a small Pay It Forward contribution to your membership. 100% of these funds go into a bucket used to offset fees and provide discounted, affiliated makerspace access for those who need it.</p>
-                            </div>
-                            <div class="md:w-1/2 bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                                <h3 class="text-xl font-bold text-gray-900 mb-3">Need a Supported Membership?</h3>
-                                <p class="text-gray-600 text-sm leading-relaxed mb-4">We operate a trust-based, no-questions-asked queue for supported memberships. If our standard affiliate rates are a barrier to your participation right now, simply add your name to the waitlist. As Pay It Forward funds and donated slots become available from our partners, we issue them directly to the queue. No applications, no justification needed—just a desire to build.</p>
-                                <a href="mailto:foundation@idea-forge.org?subject=Supported Membership Waitlist" class="inline-block text-teal-600 font-semibold hover:underline">Join the Waitlist &rarr;</a>
-                            </div>
+
+
+                <!-- Pricing Tiers Section -->
+                <div class="mt-20 max-w-5xl mx-auto">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Ready to Join?</h2>
+                        <div class="bg-orange-50 border border-orange-100 p-6 rounded-lg inline-block text-left max-w-2xl">
+                            <h3 class="font-bold text-orange-800 mb-2">Why $65?</h3>
+                            <p class="text-orange-700 text-sm">
+                                The true market value of our facility access is $200/month. Thanks to our donors and 501(c)(3) status, Idea Forge Foundation subsidizes every membership to keep innovation accessible to all of Oklahoma City.
+                            </p>
                         </div>
                     </div>
-                </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Sustaining Member -->
+                        <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-8 flex flex-col hover:border-orange-300 transition-colors">
+                            <div class="mb-4">
+                                <span class="bg-gray-100 text-gray-600 text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full">Mission</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Sustaining Member</h3>
+                            <div class="mb-6">
+                                <span class="text-4xl font-extrabold text-gray-900">$20</span>
+                                <span class="text-gray-500">/mo</span>
+                            </div>
+                            <p class="text-gray-600 mb-8 flex-grow">Support the "Maker Passport" & Innovation in our community.</p>
+                            <a href="#" class="block w-full text-center bg-gray-800 text-white font-semibold px-4 py-3 rounded-lg hover:bg-gray-900 transition-colors">
+                                Support Us
+                            </a>
+                        </div>
+
+                        <!-- Maker Membership -->
+                        <div class="bg-white border-2 border-orange-500 rounded-xl shadow-md p-8 flex flex-col relative transform md:-translate-y-4">
+                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                <span class="bg-orange-500 text-white text-xs font-bold uppercase tracking-wider py-1 px-4 rounded-full shadow-sm whitespace-nowrap">Most Popular</span>
+                            </div>
+                            <div class="mb-4 mt-2">
+                                <span class="text-orange-600 text-sm font-semibold italic">$200 Value</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Maker Membership</h3>
+                            <div class="mb-6">
+                                <span class="text-4xl font-extrabold text-gray-900">$65</span>
+                                <span class="text-gray-500">/mo</span>
+                            </div>
+                            <ul class="text-gray-600 mb-8 flex-grow space-y-3">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span>Access to Project 3810</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span>Thu, Fri, Sat from 4pm to 9pm</span>
+                                </li>
+                            </ul>
+                            <a href="#" class="block w-full text-center bg-orange-500 text-white font-semibold px-4 py-3 rounded-lg hover:bg-orange-600 transition-colors cta-button">
+                                Sign Up Now
+                            </a>
+                        </div>
+
+                        <!-- Pay it Forward -->
+                        <div class="bg-teal-50 border border-teal-200 rounded-xl shadow-sm p-8 flex flex-col hover:border-teal-400 transition-colors">
+                            <div class="mb-4">
+                                <span class="bg-teal-100 text-teal-700 text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full">Scholarship</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Pay it Forward</h3>
+                            <div class="mb-6">
+                                <span class="text-4xl font-extrabold text-gray-900">$200</span>
+                            </div>
+                            <p class="text-gray-600 mb-8 flex-grow">Fully fund one month for a community member who needs financial assistance.</p>
+                            <a href="#" class="block w-full text-center bg-teal-600 text-white font-semibold px-4 py-3 rounded-lg hover:bg-teal-700 transition-colors">
+                                Donate
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Scholarship Note -->
+                    <div class="mt-12 text-center">
+                        <p class="text-gray-600">
+                            Need a supported membership? We operate a trust-based, no-questions-asked queue for supported memberships.
+                        </p>
+                        <a href="#" class="inline-block mt-2 text-orange-600 font-semibold hover:text-orange-700 hover:underline">
+                            Apply for a Student/Hardship Scholarship &rarr;
+                        </a>
+                    </div>
 
             </div>
         </section>
