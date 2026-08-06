@@ -28,6 +28,7 @@
             align-items: center;
             padding: 2rem;
             gap: 2rem;
+            text-shadow: 1px 1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff, 0px 1px 0 #fff, 0px -1px 0 #fff, -1px 0px 0 #fff, 1px 0px 0 #fff, 0 0 2px #fff;
         }
 
         /* The Dot Grid Pattern */
@@ -403,36 +404,31 @@
 <span>NON-TRANSFERABLE</span>
 </div>
 <h2>THIS LOGBOOK BELONGS TO:</h2>
-<br/>
 <p>MAKER NAME / ALIAS:</p>
 <span class="fill-line"></span>
-<br/><br/>
 <p>CURRENT HYPER-FIXATION:</p>
 <span class="fill-line"></span>
 <span class="fill-line"></span>
-<br/><br/>
-<h2>PREFERRED TOOLS OF DESTRUCTION:</h2>
-<ul class="checkbox-list">
-<li>Soldering Irons &amp; Microcontrollers</li>
-<li>Power Tools &amp; Sawdust</li>
-<li>Code &amp; Keyboards</li>
-<li>Hot Glue &amp; Hope</li>
+<h2 style="margin-top: 0.25rem;">PREFERRED TOOLS OF DESTRUCTION:</h2>
+<ul class="checkbox-list" style="margin-top: 0.25rem;">
+<li style="margin-bottom: 0.25rem;">Soldering Irons &amp; Microcontrollers</li>
+<li style="margin-bottom: 0.25rem;">Power Tools &amp; Sawdust</li>
+<li style="margin-bottom: 0.25rem;">Code &amp; Keyboards</li>
+<li style="margin-bottom: 0.25rem;">Hot Glue &amp; Hope</li>
 </ul>
-<br/>
-<p class="bold">LIFETIME MAGIC SMOKE RELEASES: [        ]</p>
+<p class="bold" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">LIFETIME MAGIC SMOKE RELEASES: [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]</p>
 </div>
-<div class="border-box" style="background-color: var(--bg-color);">
+<div class="border-box" style="background-color: var(--bg-color); margin-bottom: 0;">
 <p class="bold">THE DIRECTIVE:</p>
 <p>Travel the local ecosystem. Build cool things. Help others. Collect the stamps. (A selfie at the space also counts as proof of visit). Do not anger the CNC router.</p>
-<br/>
-<p class="bold">ACCESS LEVEL LEGEND:</p>
-<ul class="checkbox-list" style="font-size: 10px; line-height: 1.3;">
-<li>○ Public / Free: Open to everyone, no cost.</li>
-<li>📖 Library Card Required: Free, but requires an active local library card.</li>
-<li>🎓 University Only: Restricted to enrolled students or faculty.</li>
-<li>$ Day Pass / Fee: Requires paid admission or a day rate.</li>
-<li>★ Membership Required: Requires an active paid subscription or membership.</li>
-<li>🔒 Restricted: Invite only or specialized clearance required.</li>
+<p class="bold" style="margin-top: 0.5rem;">ACCESS LEVEL LEGEND:</p>
+<ul class="checkbox-list" style="font-size: 10px; line-height: 1.3; margin-top: 0.25rem;">
+<li style="margin-bottom: 0.25rem;">○ Public / Free: Open to everyone, no cost.</li>
+<li style="margin-bottom: 0.25rem;">📖 Library Card Required: Free, but requires an active local library card.</li>
+<li style="margin-bottom: 0.25rem;">🎓 University Only: Restricted to enrolled students or faculty.</li>
+<li style="margin-bottom: 0.25rem;">$ Day Pass / Fee: Requires paid admission or a day rate.</li>
+<li style="margin-bottom: 0.25rem;">★ Membership Required: Requires an active paid subscription or membership.</li>
+<li style="margin-bottom: 0.25rem;">🔒 Restricted: Invite only or specialized clearance required.</li>
 </ul>
 </div>
 </div><div class="page dot-grid">
@@ -832,10 +828,10 @@ function applyImposition() {
 
     layout.innerHTML = '';
 
-    const originalPages = Array.from(container.children).map(p => {
+        const originalPages = Array.from(container.children).map((p, idx) => {
         let clone = p.cloneNode(true);
         return {
-            html: clone.innerHTML,
+            html: `<div data-page-index="${idx}" style="height: 100%; width: 100%;">` + clone.innerHTML + `</div>`,
             isDotGrid: clone.classList.contains('dot-grid')
         };
     });

@@ -1,0 +1,31 @@
+{
+  "devDependencies": {
+    "@playwright/test": "^1.62.1"
+  },
+  "name": "app",
+  "version": "1.0.0",
+  "description": "This repository contains the source code for the official website of the **Idea Forge Foundation**, a non-profit organization dedicated to fostering innovation and creativity in Oklahoma.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "playwright": "^1.62.1",
+    "playwright-core": "^1.62.1"
+  },
+  "scripts": {
+    "test": "playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IdeaForgeFoundation/ideaforgefoundation.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/IdeaForgeFoundation/ideaforgefoundation.github.io/issues"
+  },
+  "homepage": "https://github.com/IdeaForgeFoundation/ideaforgefoundation.github.io#readme"
+}
