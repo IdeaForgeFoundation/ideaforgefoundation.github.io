@@ -15,5 +15,5 @@ This file tracks potential future tasks and improvements for the Idea Forge Foun
 
 ## Low Priority
 - [ ] Conduct a full accessibility audit (WCAG).
-- [ ] Add schema.org markup for better SEO.
+- [x] Add schema.org markup for better SEO.
 - [x] Create a style guide for consistent branding.
