@@ -144,10 +144,15 @@
             justify-content: center;
             align-items: center;
             gap: 1rem;
+            text-shadow: none;
+        }
+
+        .print-controls * {
+            text-shadow: none;
         }
 
         .print-btn {
-            background-color: #f43f5e; /* Rose 500 */
+            background-color: #be123c; /* Rose 700 */
             color: white;
             border: none;
             padding: 0.5rem 1rem;
@@ -161,12 +166,12 @@
         }
 
         .print-btn:hover {
-            background-color: #e11d48; /* Rose 600 */
+            background-color: #9f1239; /* Rose 800 */
         }
 
         .print-help {
             font-size: 12px;
-            color: #aaa;
+            color: #e2e8f0;
         }
 
         /* Adjust body padding so top page isn't hidden under controls */
@@ -370,7 +375,7 @@
 </style>
 </head>
 <body>
-<div class="print-controls"><button class="print-btn" onclick="window.print()">Print Passport</button><select id="layout-mode" onchange="applyImposition()" style="padding: 0.5rem; font-family: inherit; font-size: 14px; border-radius: 4px; border: none; margin-left: 1rem; cursor: pointer;"><option value="cut-stack">Cut &amp; Stack Layout</option><option value="saddle-stitch">Saddle Stitch Layout</option><option value="cover-2up">Cover Only (2-up)</option></select><span class="print-help" id="print-help-text" style="margin-left: 1rem;"></span></div>
+<div class="print-controls"><button class="print-btn" onclick="window.print()">Print Passport</button><label for="layout-mode" class="sr-only" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;">Layout Mode</label><select id="layout-mode" aria-label="Layout Mode" onchange="applyImposition()" style="padding: 0.5rem; font-family: inherit; font-size: 14px; border-radius: 4px; border: none; margin-left: 1rem; cursor: pointer;"><option value="cut-stack">Cut &amp; Stack Layout</option><option value="saddle-stitch">Saddle Stitch Layout</option><option value="cover-2up">Cover Only (2-up)</option></select><span class="print-help" id="print-help-text" style="margin-left: 1rem;"></span></div>
 
 
 

@@ -14,6 +14,6 @@ This file tracks potential future tasks and improvements for the Idea Forge Foun
 - [ ] Flesh out the "Partners" section with more details about each partner.
 
 ## Low Priority
-- [ ] Conduct a full accessibility audit (WCAG).
+- [x] Conduct a full accessibility audit (WCAG).
 - [ ] Add schema.org markup for better SEO.
 - [ ] Create a style guide for consistent branding.
