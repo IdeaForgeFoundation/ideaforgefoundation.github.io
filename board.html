@@ -82,7 +82,7 @@
                     </svg>
                     <span class="text-2xl font-bold text-gray-900">Idea Forge Foundation</span>
                 </a>
-                <nav class="hidden md:flex items-center space-x-8">
+                <nav class="hidden lg:flex items-center space-x-4 xl:space-x-8">
                     <div class="relative" x-data="{ open: false }" @click.away="open = false">
                         <button @click="open = !open" class="flex items-center text-gray-600 hover:text-orange-500 transition-colors">
                             About
@@ -101,11 +101,11 @@
                     <a href="initiatives.html" class="text-gray-600 hover:text-orange-500 transition-colors">Initiatives</a>
                     <a href="index.html#involved" class="text-gray-600 hover:text-orange-500 transition-colors">Get Involved</a>
                     <a href="index.html#contact" class="text-gray-600 hover:text-orange-500 transition-colors">Contact</a>
+                    <a href="index.html#donate" class="bg-orange-700 text-white font-semibold px-5 py-2 rounded-lg cta-button hover:bg-orange-800">
+                        Donate
+                    </a>
                 </nav>
-                <a href="index.html#donate" class="hidden md:inline-block bg-orange-500 text-white font-semibold px-5 py-2 rounded-lg cta-button hover:bg-orange-600">
-                    Donate
-                </a>
-                <button @click="mobileOpen = !mobileOpen" class="md:hidden text-gray-800">
+                <button @click="mobileOpen = !mobileOpen" class="lg:hidden text-gray-800" aria-label="Toggle navigation menu">
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
@@ -113,7 +113,7 @@
             </div>
 
             <!-- Mobile Menu -->
-            <div x-show="mobileOpen" x-transition class="md:hidden mt-4 pb-4">
+            <div x-show="mobileOpen" x-transition class="lg:hidden mt-4 pb-4">
                 <a href="index.html#about" class="block py-2 text-gray-600 hover:text-orange-500">About Us</a>
                 <a href="board.html" class="block py-2 text-gray-600 hover:text-orange-500">Our Board</a>
                 <a href="bylaws.html" class="block py-2 text-gray-600 hover:text-orange-500">Bylaws</a>
@@ -124,7 +124,7 @@
                 <a href="initiatives.html" class="block py-2 text-gray-600 hover:text-orange-500">Initiatives</a>
                 <a href="index.html#involved" class="block py-2 text-gray-600 hover:text-orange-500">Get Involved</a>
                 <a href="index.html#contact" class="block py-2 text-gray-600 hover:text-orange-500">Contact</a>
-                <a href="index.html#donate" class="block mt-4 text-center bg-orange-500 text-white font-semibold px-5 py-2 rounded-lg hover:bg-orange-600">
+                <a href="index.html#donate" class="block mt-4 text-center bg-orange-700 text-white font-semibold px-5 py-2 rounded-lg hover:bg-orange-800">
                     Donate
                 </a>
             </div>
@@ -153,10 +153,10 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-white">
         <div class="container mx-auto px-6 py-12">
-            <div class="text-center text-gray-500">
+            <div class="text-center text-gray-300">
                 <a href="index.html" class="text-white text-xl font-bold">Idea Forge Foundation</a>
                 <p class="mt-4">
-                    <a href="mailto:foundation@idea-forge.org" class="hover:text-white">foundation@idea-forge.org</a>
+                    <a href="mailto:foundation@idea-forge.org" class="text-gray-300 hover:text-white">foundation@idea-forge.org</a>
                 </p>
                 <div class="mt-8 border-t border-gray-800 pt-8">
                     <p>&copy; 2026 Idea Forge Foundation. All rights reserved.</p>
@@ -239,7 +239,7 @@ Through his projects and leadership, Peter aims to lower barriers of entry for i
                         <img src="${member.imageUrl}" alt="Photo of ${member.name}" class="w-full h-64 object-cover ${objectPosition}">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold text-gray-900">${member.name}</h3>
-                            <p class="text-orange-600 font-semibold mb-3">${member.title}</p>
+                            <p class="text-orange-700 font-semibold mb-3">${member.title}</p>
                             <p class="text-gray-600">${member.bio}</p>
                         </div>
                     </div>
