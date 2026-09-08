@@ -8,8 +8,14 @@ The website is a static site built with modern web technologies and is hosted on
 
 *   **HTML5:** The core markup for the website.
 *   **[Tailwind CSS](https://tailwindcss.com/):** A utility-first CSS framework for rapid UI development.
-*   **[Alpine.js](https://alpinejs.dev/):** A rugged, minimal framework for composing JavaScript behavior in your markup. Used for the navigation dropdown.
+*   **[Alpine.js](https://alpinejs.dev/):** A rugged, minimal framework for composing JavaScript behavior in your markup. Used for navigation dropdowns and interactivity.
 *   **[Chart.js](https://www.chartjs.org/):** Used for rendering charts on the campaign page.
+
+## Brand & Design Guidelines
+
+For consistent branding, color palettes, typography, UI components, and design standards across all pages, please refer to the **[Style Guide](STYLE_GUIDE.md)**.
+
+AI agents and automated contributors should also consult **[AGENTS.md](AGENTS.md)** for developer instructions and technical rules.
 
 ## Getting Started
 

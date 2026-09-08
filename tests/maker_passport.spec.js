@@ -8,6 +8,72 @@ test.describe('Maker Passport Imposition Layouts', () => {
     filePath = path.resolve(__dirname, '../maker-passport-template.html');
   });
 
+  test('2-Up Saddle Stitch Logbook Page Visual Validation', async ({ page }) => {
+    await page.goto(`file://${filePath}`);
+    await page.locator('#layout-mode').selectOption('saddle-stitch-2up');
+    await page.waitForTimeout(500);
+
+    const logbookPage = page.locator('.page-half').filter({ hasText: 'THIS LOGBOOK BELONGS TO:' }).first();
+    await expect(logbookPage).toBeVisible();
+    await expect(logbookPage).toHaveScreenshot('logbook-page-saddle-stitch-2up.png', {
+      maxDiffPixelRatio: 0.1
+    });
+  });
+
+  test('2-Up Saddle Stitch Imposition Mathematical Validation', async ({ page }) => {
+    await page.goto(`file://${filePath}`);
+
+    const originalPageCount = await page.evaluate(() => {
+      return document.getElementById('pages-container').children.length;
+    });
+
+    let n = originalPageCount;
+    while (n % 4 !== 0) n++;
+
+    await page.locator('#layout-mode').selectOption('saddle-stitch-2up');
+    await page.waitForTimeout(500);
+
+    const sheets = await page.locator('.sheet-2up').all();
+    expect(sheets.length).toBe(n / 2);
+
+    const spreads = await page.locator('.spread-2up').all();
+    expect(spreads.length).toBe(n);
+
+    for (let i = 0; i < spreads.length; i++) {
+        const spread = spreads[i];
+        const pageHalves = spread.locator('.page-half');
+        await expect(pageHalves).toHaveCount(2);
+
+        const k = Math.floor(i / 4);
+        let expectedLeft, expectedRight;
+
+        if (i % 4 === 0 || i % 4 === 1) {
+            // Front side of sheet k (top and bottom identical)
+            expectedLeft = n - 1 - 2*k;
+            expectedRight = 0 + 2*k;
+        } else {
+            // Back side of sheet k (top and bottom identical)
+            expectedLeft = 1 + 2*k;
+            expectedRight = n - 2 - 2*k;
+        }
+
+        const leftIndexStr = await pageHalves.nth(0).locator('[data-page-index]').getAttribute('data-page-index');
+        const rightIndexStr = await pageHalves.nth(1).locator('[data-page-index]').getAttribute('data-page-index');
+
+        if (expectedLeft < originalPageCount) {
+            expect(leftIndexStr).toBe(expectedLeft.toString());
+        } else {
+            expect(leftIndexStr).toBeNull();
+        }
+
+        if (expectedRight < originalPageCount) {
+            expect(rightIndexStr).toBe(expectedRight.toString());
+        } else {
+            expect(rightIndexStr).toBeNull();
+        }
+    }
+  });
+
   test('Saddle Stitch Logbook Page Visual Validation', async ({ page }) => {
     await page.goto(`file://${filePath}`);
     await page.locator('#layout-mode').selectOption('saddle-stitch');
